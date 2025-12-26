@@ -1,9 +1,10 @@
 import { ChevronDown } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import '../../assets/styles/general/NavBar.css'
 import logo from '../../../public/logo.png'
 
 export const NavBar = () => {
-
+    const nav = useNavigate()
 
     return (
         <div>
@@ -16,7 +17,7 @@ export const NavBar = () => {
                 </ul>
             </div>
             <div className='nav-bar'>
-                <div className='logo'><img src={logo} alt="logo" /></div>
+                <div className='logo' onClick={() => nav('/home')}><img src={logo} alt="logo" /></div>
 
 
                 <ul id="menu-espanol">

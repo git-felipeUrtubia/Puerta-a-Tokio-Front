@@ -107,14 +107,22 @@
 }
 
 /* Botón detalle */
+.content-btn-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+}
+
 .details-link {
+  all: unset;
   display: block;
   text-align: right;
   margin-top: 10px;
   font-size: 0.85rem;
   color: #333;
-  text-decoration: none;
   font-weight: 500;
+  cursor: pointer;
 }
 
 .details-link span {

@@ -1,11 +1,15 @@
 
 import { Stars } from "./Stars";
+import { useCart } from "../../context/CardContext";
+import { useNavigate } from "react-router-dom";
 import '../../assets/styles/home/Card.css'
 
 
 
 export const Card = ({ tour }) => {
-    const { image, title, destinations, details, duration, price, rating } = tour;
+    const {id, image, title, destinations, description, route, duration, price, rating } = tour;
+    const { viajeSeleccionado } = useCart()
+    const nav = useNavigate()
 
     return (
         <div className="card">
@@ -22,7 +26,7 @@ export const Card = ({ tour }) => {
                     <span className="country-highlight">{destinations}</span>
                 </div>
 
-                <p className="route-cities">{details}</p>
+                <p className="route-cities">{route}</p>
 
                 <div className="card-footer">
                     <div className="price-container">
@@ -30,11 +34,14 @@ export const Card = ({ tour }) => {
                         <span className="price-value">{price}</span>
                     </div>
 
-                    <div>
+                    <div className="content-btn-details">
                         <Stars rating={rating} />
-                        <a href="#" className="details-link">
+                        <button className="details-link" onClick={() => {
+                            viajeSeleccionado(id)
+                            nav('/home/travel-details')
+                        }}>
                             <span>Detalle</span>
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
