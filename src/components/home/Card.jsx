@@ -7,7 +7,7 @@ import '../../assets/styles/home/Card.css'
 
 
 export const Card = ({ tour }) => {
-    const {id, image, title, destinations, description, route, duration, price, rating } = tour;
+    const {id, num_tour, image, title, destinations, description, route, duration, price, rating } = tour;
     const { viajeSeleccionado } = useCart()
     const nav = useNavigate()
 
