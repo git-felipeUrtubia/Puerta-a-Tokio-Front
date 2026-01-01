@@ -1,98 +1,91 @@
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, User } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import '../../assets/styles/general/NavBar.css'
-import logo from '../../../public/logo.png'
+import '../../assets/styles/general/NavBar.css';
+import logo from '../../../public/logo.png';
 
 export const NavBar = () => {
-    const nav = useNavigate()
+    const nav = useNavigate();
 
     return (
-        <div>
-
-            <div className='nav-bar-lenguage'>
-                <ul>
+        <header className="header-container">
+            {/* Barra superior (Idiomas) */}
+            <div className='top-bar'>
+                <ul className="lang-list">
                     <li><a href="#">ESPAÑOL</a></li>
-                    <li><a href="#">PORTUGUES</a></li>
-                    <li><a href="#">INGLES</a></li>
+                    <li><span className="separator">|</span></li>
+                    <li><a href="#">PORTUGUÊS</a></li>
+                    <li><span className="separator">|</span></li>
+                    <li><a href="#">ENGLISH</a></li>
                 </ul>
             </div>
-            <div className='nav-bar'>
-                <div className='logo' onClick={() => nav('/home')}><img src={logo} alt="logo" /></div>
 
+            {/* Navegación Principal */}
+            <nav className='main-nav'>
+                
+                {/* Logo */}
+                <div className='brand-logo' onClick={() => nav('/home')}>
+                    <img src={logo} alt="Puerta a Tokio Logo" />
+                </div>
 
-                <ul id="menu-espanol">
-                    <li className='nav-dropdown'>
-
-                        <a href="#"><span className='text-destinos'><span>Destinos</span> <ChevronDown style={{ width: '1rem', height: '1rem' }} /></span></a>
-
-                        <ul id="sub-menu" >
-
-                            <li><a href="#"><span>Tokio y Kanto</span></a></li>
-                            <li><a href="#"><span>Kioto y Kansai</span></a></li>
-                            <li><a href="#"><span>Hokkaido</span></a></li>
-                            <li><a href="#"><span>Islas Okinawa</span></a></li>
-                            <li><a href="#"><span>Kyushu</span></a></li>
-
-
+                {/* Menú Central */}
+                <ul className="nav-links">
+                    <li className='nav-item'>
+                        <a href="#" className="nav-link">
+                            Destinos <ChevronDown size={14} className="chevron" />
+                        </a>
+                        <ul className="dropdown-menu">
+                            <li><a href="#">Tokio y Kanto</a></li>
+                            <li><a href="#">Kioto y Kansai</a></li>
+                            <li><a href="#">Hokkaido</a></li>
+                            <li><a href="#">Islas Okinawa</a></li>
+                            <li><a href="#">Kyushu</a></li>
                         </ul>
-
                     </li>
 
-                    <li className='nav-dropdown'>
-
-                        <a href="#"><span className='text-destinos'>Experiencias <ChevronDown style={{ width: '1rem', height: '1rem' }} /></span></a>
-
-                        <ul id="sub-menu" >
-
-                            <li><a href="#"><span>Gion Matsuri</span></a></li>
-                            <li><a href="#"><span>Kanda Matsuri</span></a></li>
-                            <li><a href="#"><span>Festival de la Nieve de Sapporo</span></a></li>
-                            <li><a href="#"><span>Santuario Fushimi Inari-taisha</span></a></li>
-                            <li><a href="#"><span>Barrio de Gion</span></a></li>
-                            <li><a href="#"><span>Itsukushima (Santuario Flotante)</span></a></li>
-                            <li><a href="#"><span>Shibuya</span></a></li>
-
+                    <li className='nav-item'>
+                        <a href="#" className="nav-link">
+                            Experiencias <ChevronDown size={14} className="chevron" />
+                        </a>
+                        <ul className="dropdown-menu">
+                            <li><a href="#">Festivales (Matsuri)</a></li>
+                            <li><a href="#">Santuarios y Templos</a></li>
+                            <li><a href="#">Naturaleza</a></li>
+                            <li><a href="#">Barrios Emblemáticos</a></li>
                         </ul>
-
                     </li>
 
-                    <li className='nav-dropdown'>
-
-                        <a href="#"><span className='text-destinos'>Sobre Nosotros <ChevronDown style={{ width: '1rem', height: '1rem' }} /></span></a>
-
-                        <ul id="sub-menu" >
-
-                            <li><a href="#"><span>Sobre nosotros</span></a></li>
-                            <li><a href="#"><span>Inspiración</span></a></li>
-                            <li><a href="#"><span>¿Por que Mundo de Japón?</span></a></li>
-                            <li><a href="#"><span>Contacto</span></a></li>
-
+                    <li className='nav-item'>
+                        <a href="#" className="nav-link">
+                            Nosotros <ChevronDown size={14} className="chevron" />
+                        </a>
+                        <ul className="dropdown-menu">
+                            <li><a href="#">Nuestra Historia</a></li>
+                            <li><a href="#">Inspiración</a></li>
+                            <li><a href="#">Contacto</a></li>
                         </ul>
-
                     </li>
 
-                    <li className='nav-dropdown'>
-
-                        <a href="#"><span className='text-destinos'>Blog <ChevronDown style={{ width: '1rem', height: '1rem' }} /></span></a>
-
-                        <ul id="sub-menu" >
-
-                            <li><a href="#"><span>Tokyo y Ciudades</span></a></li>
-                            <li><a href="#"><span>Experiencias Locales</span></a></li>
-                            <li><a href="#"><span>Pueblos Magicos</span></a></li>
-                            <li><a href="#"><span>Comida Japonesa</span></a></li>
-
+                    <li className='nav-item'>
+                        <a href="#" className="nav-link">
+                            Blog <ChevronDown size={14} className="chevron" />
+                        </a>
+                        <ul className="dropdown-menu">
+                            <li><a href="#">Guías de Ciudad</a></li>
+                            <li><a href="#">Gastronomía</a></li>
+                            <li><a href="#">Consejos de Viaje</a></li>
                         </ul>
-
                     </li>
-
                 </ul>
 
-            </div>
-        </div>
+                {/* Sección Login (Diseño Premium) */}
+                <div className='nav-actions'>
+                    <button className='btn-account' onClick={() => nav('/login')}>
+                        <User size={18} className="icon-user" />
+                        <span>Mi Cuenta</span>
+                    </button>
+                </div>
+
+            </nav>
+        </header>
     )
-
 }
-
-
-

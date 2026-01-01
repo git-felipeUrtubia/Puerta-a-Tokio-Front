@@ -1,123 +1,214 @@
-
-.nav-bar-lenguage li, a {
-    text-decoration: none;
-    list-style-type: none;
-    cursor: pointer;
-    color: rgb(166, 166, 166);
+:root {
+    --primary-red: #cc0808; /* Tu rojo corporativo */
+    --text-dark: #1f1f1f;
+    --text-light: #666666;
+    --bg-white: #ffffff;
+    --border-color: #e5e5e5;
 }
 
-.nav-bar-lenguage a:hover {
-    color: rgb(255, 255, 255);
-    border-bottom: #ffffff solid 2px;
-}
-
-.nav-bar-lenguage {
-    position: relative;
+/* --- CONTENEDOR PRINCIPAL --- */
+.header-container {
     width: 100%;
-    height: 5rem;
-    background-color: rgb(48, 45, 45);
-    font-size: small;
+    background-color: var(--bg-white);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03); /* Sombra muy suave */
+    position: relative;
+    z-index: 1000;
 }
 
-.nav-bar-lenguage ul {
-    position: absolute;
-    top: 50%;
-    left: 80%;
-    transform: translate(-80%, -50%);
-    width: 20rem;
+/* --- BARRA SUPERIOR (IDIOMAS) --- */
+.top-bar {
+    background-color: #222; /* Negro suave */
+    color: #ccc;
+    font-size: 0.75rem;
+    padding: 8px 5%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.lang-list {
+    display: flex;
+    gap: 10px;
+    align-items: center;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: space-evenly;
-    background-color: transparent;
+    list-style: none;
 }
 
-#menu-espanol li, a {
+.lang-list a {
+    color: #ccc;
     text-decoration: none;
-    list-style-type: none;
+    transition: color 0.3s;
+    letter-spacing: 1px;
 }
 
-.nav-bar {
-    width: 100%;
-    height: 10rem;
-    position: relative;
+.lang-list a:hover {
+    color: white;
+}
+
+.separator {
+    color: #444;
+}
+
+/* --- NAVEGACIÓN PRINCIPAL --- */
+.main-nav {
     display: flex;
-    justify-content: center;
     align-items: center;
-    background-color: rgb(235, 235, 235);
+    justify-content: space-between;
+    height: 90px; /* Altura generosa para presencia */
+    padding: 0 5%;
+    border-bottom: 1px solid var(--border-color);
 }
 
-.logo {
-    position: absolute;
-    width: 12rem;
-    height: 12rem;
-    background-color: transparent;
-    top: 50%;
-    left: 10%;
-    transform: translate(-10%, -50%);
-    cursor: pointer;
-}
-
-.logo img {
-    width: 100%;
+/* 1. Logo */
+.brand-logo {
     height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-#menu-espanol {
     display: flex;
-    gap: 4rem;
-}
-
-.nav-dropdown {
-    width: auto;
-    position: relative;
-}
-
-.text-destinos {
-    font-weight: 600;
-    font-size: large;
-    color: black;
-    display: flex;
-    justify-content: flex-start;
     align-items: center;
-    transition: .3s ease;
-    gap: .5rem;
-    background-color: transparent;
-}
-
-#sub-menu {
-    position: absolute;
-    display: none;
-    width: max-content;
-    height: auto;
-    background-color: #ffffff;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: flex-start;
-    padding: 1.2rem;
-    gap: .8rem;
-    border-radius: .2rem;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 10;
-}
-
-#sub-menu span {
-    color: black;
-    transition: .2s ease;
-    font-weight: 500;
-}
-
-#sub-menu span:hover {
-    color: rgb(204, 8, 8);
-}
-
-.nav-dropdown:hover #sub-menu {
-    display: flex;
     cursor: pointer;
+    flex-shrink: 0;
 }
 
-.nav-dropdown:hover .text-destinos {
-    color: rgb(187, 14, 14);
+.brand-logo img {
+    height: 70px; /* Ajusta según tu logo real */
+    width: auto;
+    object-fit: contain;
+}
+
+/* 2. Enlaces del Menú */
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    align-items: center;
+}
+
+.nav-item {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s ease;
+    text-transform: uppercase; /* Toque más formal */
+    letter-spacing: 0.5px;
+}
+
+.chevron {
+    transition: transform 0.3s ease;
+    color: var(--text-light);
+}
+
+/* Efectos Hover Menú */
+.nav-item:hover .nav-link {
+    color: var(--primary-red);
+}
+
+.nav-item:hover .chevron {
+    transform: rotate(180deg);
+    color: var(--primary-red);
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    min-width: 200px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    border-top: 3px solid var(--primary-red); /* Detalle de color */
+    padding: 10px 0;
+    border-radius: 0 0 4px 4px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    list-style: none;
+}
+
+.nav-item:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 10px 20px;
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #f9f9f9;
+    color: var(--primary-red);
+    padding-left: 25px; /* Pequeño desplazamiento */
+}
+
+/* 3. BOTÓN LOGIN (Estilo Minimalista/Premium) */
+.nav-actions {
+    display: flex;
+    align-items: center;
+}
+
+.btn-account {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 1px solid #000; /* Borde fino y elegante */
+    color: #000;
+    padding: 10px 22px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px; /* Esquinas casi rectas para seriedad */
+}
+
+/* Animación de relleno al hacer hover */
+.btn-account::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: var(--primary-red);
+    transition: width 0.4s ease;
+    z-index: -1;
+}
+
+.btn-account:hover {
+    color: white;
+    border-color: var(--primary-red);
+    box-shadow: 0 4px 12px rgba(204, 8, 8, 0.2);
+}
+
+.btn-account:hover::before {
+    width: 100%;
+}
+
+.icon-user {
+    transition: transform 0.3s ease;
+}
+
+.btn-account:hover .icon-user {
+    transform: scale(1.1);
 }
