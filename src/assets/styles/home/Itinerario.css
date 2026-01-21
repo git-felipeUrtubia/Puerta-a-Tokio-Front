@@ -1,10 +1,57 @@
-
-
+/* =========================================
+   ESTILOS BASE (Desktop - Pantallas Grandes)
+   ========================================= */
 .grid-cards {
+    width: 100%;
+    max-width: 1300px; /* Limitamos el ancho para que no se desparrame en pantallas 4k */
+    margin: 0 auto; /* Centramos el bloque completo */
+    padding: 2rem 1rem; /* Un poco de aire a los lados */
+    
     display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(4, max-content);
+    justify-content: center; /* Centra el bloque de tarjetas */
+    
+    /* Usamos 'auto-fit' con 'minmax'. 
+       Esto es "magia": intenta poner tantas columnas como quepan, 
+       siempre que cada tarjeta mida al menos 280px.
+       Si prefieres control manual estricto, mira las media queries abajo.
+    */
+    grid-template-columns: repeat(4, 1fr); 
     gap: 2rem;
 }
 
+/* =========================================
+   RESPONSIVO (Laptops y Pantallas Medianas)
+   ========================================= */
+@media screen and (max-width: 1200px) {
+    .grid-cards {
+        /* Bajamos a 3 columnas si no caben 4 */
+        grid-template-columns: repeat(3, max-content);
+    }
+}
 
+/* =========================================
+   RESPONSIVO (Tablets)
+   ========================================= */
+@media screen and (max-width: 900px) {
+    .grid-cards {
+        /* Bajamos a 2 columnas */
+        grid-template-columns: repeat(2, max-content);
+        gap: 1.5rem;
+    }
+}
+
+/* =========================================
+   RESPONSIVO (Móviles)
+   ========================================= */
+@media screen and (max-width: 600px) {
+    .grid-cards {
+        /* 1 sola columna, centrada */
+        grid-template-columns: 1fr; 
+        
+        /* O si tus tarjetas tienen ancho fijo y prefieres que no se estiren: */
+        /* grid-template-columns: max-content; */
+        
+        justify-items: center; /* Asegura que la tarjeta esté al centro del celular */
+        gap: 2rem;
+    }
+}

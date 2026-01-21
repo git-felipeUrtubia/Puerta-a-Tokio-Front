@@ -1,10 +1,12 @@
-import { ChevronDown, User } from 'lucide-react';
+import React, { useState } from 'react';
+import { ChevronDown, User, Menu, X } from 'lucide-react'; // Agregamos Menu y X
 import { useNavigate } from 'react-router-dom';
 import '../../assets/styles/general/NavBar.css';
 import logo from '../../../public/logo.png';
 
 export const NavBar = () => {
     const nav = useNavigate();
+    const [isOpen, setIsOpen] = useState(false); // Estado para el menú móvil
 
     return (
         <header className="header-container">
@@ -27,8 +29,13 @@ export const NavBar = () => {
                     <img src={logo} alt="Puerta a Tokio Logo" />
                 </div>
 
-                {/* Menú Central */}
-                <ul className="nav-links">
+                {/* Botón Hamburguesa (Solo visible en Móvil) */}
+                <div className="mobile-menu-icon" onClick={() => setIsOpen(!isOpen)}>
+                    {isOpen ? <X size={28} /> : <Menu size={28} />}
+                </div>
+
+                {/* Menú Central - Se agrega la clase 'active' si isOpen es true */}
+                <ul className={`nav-links ${isOpen ? 'active' : ''}`}>
                     <li className='nav-item'>
                         <a href="#" className="nav-link">
                             Destinos <ChevronDown size={14} className="chevron" />
@@ -75,10 +82,17 @@ export const NavBar = () => {
                             <li><a href="#">Consejos de Viaje</a></li>
                         </ul>
                     </li>
+
+                    {/* Botón Mi Cuenta (Versión Móvil dentro del menú) */}
+                    <li className='nav-item mobile-only'>
+                        <button className='btn-account-mobile' onClick={() => nav('/home/login')}>
+                            <User size={18} /> Mi Cuenta
+                        </button>
+                    </li>
                 </ul>
 
-                {/* Sección Login (Diseño Premium) */}
-                <div className='nav-actions'>
+                {/* Sección Login Desktop (Se oculta en móvil) */}
+                <div className='nav-actions desktop-only'>
                     <button className='btn-account' onClick={() => nav('/home/login')}>
                         <User size={18} className="icon-user" />
                         <span>Mi Cuenta</span>

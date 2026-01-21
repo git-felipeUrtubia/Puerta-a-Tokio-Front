@@ -1,4 +1,4 @@
-/* Comments.css - Versión Scroll Vertical */
+/* Comments.css - Versión Responsive */
 :root {
   --primary-red: #E3342F;
   --text-dark: #1a1a1a;
@@ -39,32 +39,29 @@
 
 /* --- CONTENEDOR CON SCROLL (El "Desplegable") --- */
 .comments-scroll-wrapper {
-  /* Aquí definimos la altura máxima antes de que aparezca el scroll */
-  max-height: 600px; 
-  overflow-y: auto; /* Activa el scroll vertical */
-  padding: 10px 20px 10px 5px; /* Padding extra a la derecha para el scrollbar */
+  max-height: 600px;
+  overflow-y: auto;
+  padding: 10px 20px 10px 5px;
   margin-bottom: 50px;
-  
-  /* Borde sutil opcional para delimitar el área */
-  border: 1px solid rgba(0,0,0,0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   border-radius: 8px;
-  background-color: #f4f4f4; /* Fondo ligeramente diferente para el canal */
+  background-color: #f4f4f4;
 }
 
-/* Personalización del Scrollbar (Chrome, Safari, Edge) */
+/* Scrollbar Personalizado */
 .comments-scroll-wrapper::-webkit-scrollbar {
   width: 8px;
 }
 
 .comments-scroll-wrapper::-webkit-scrollbar-track {
-  background: #e0e0e0; 
+  background: #e0e0e0;
   border-radius: 4px;
 }
 
 .comments-scroll-wrapper::-webkit-scrollbar-thumb {
-  background-color: var(--primary-red); 
+  background-color: var(--primary-red);
   border-radius: 4px;
-  border: 2px solid #e0e0e0; /* Espacio alrededor del thumb */
+  border: 2px solid #e0e0e0;
 }
 
 /* --- TARJETAS DE COMENTARIO --- */
@@ -78,18 +75,17 @@
   background: var(--white);
   padding: 25px 30px;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   border-left: 4px solid transparent;
   transition: transform 0.2s ease, border-color 0.2s ease;
-  
-  /* Asegura que no se rompa el diseño */
   width: 100%;
   box-sizing: border-box;
+  /* Vital para responsivo */
 }
 
 .comment-card:hover {
   border-left-color: var(--primary-red);
-  transform: translateX(4px); /* Movimiento sutil a la derecha */
+  transform: translateX(4px);
 }
 
 .comment-header {
@@ -125,11 +121,13 @@
   margin-top: 2px;
 }
 
+/* Alineación de estrellas y texto (Desktop) */
 .stars {
   color: var(--star-gold);
   font-size: 0.95rem;
   margin-bottom: 10px;
-  padding-left: 57px; /* Alineado con el texto (saltando avatar) */
+  padding-left: 57px;
+  /* Alineado saltando el avatar */
 }
 
 .comment-text {
@@ -138,7 +136,8 @@
   line-height: 1.6;
   font-style: italic;
   margin: 0;
-  padding-left: 57px; /* Alineado con el texto (saltando avatar) */
+  padding-left: 57px;
+  /* Alineado saltando el avatar */
 }
 
 /* --- FORMULARIO --- */
@@ -146,7 +145,7 @@
   background: var(--white);
   padding: 35px;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
 }
 
 .form-title {
@@ -180,15 +179,20 @@
   color: var(--text-dark);
 }
 
-.form-input, .form-textarea {
+.form-input,
+.form-textarea {
   padding: 12px;
   border: 1px solid var(--border-light);
   border-radius: 6px;
   font-family: inherit;
   font-size: 0.95rem;
+  width: 100%;
+  /* Asegura ancho completo */
+  box-sizing: border-box;
 }
 
-.form-input:focus, .form-textarea:focus {
+.form-input:focus,
+.form-textarea:focus {
   outline: none;
   border-color: var(--primary-red);
 }
@@ -230,8 +234,52 @@
   background-color: #c52b27;
 }
 
-/* Mobile */
-@media (max-width: 600px) {
-  .stars, .comment-text { padding-left: 0; }
-  .form-row { flex-direction: column; }
+/* =========================================
+   RESPONSIVO (Móviles - max 768px)
+   ========================================= */
+@media screen and (max-width: 768px) {
+
+  .comments-section {
+    padding: 40px 15px;
+    /* Menos padding general */
+  }
+
+  .comments-title {
+    font-size: 1.8rem;
+    /* Título más pequeño */
+  }
+
+  /* Reducir altura del scroll en celular para no bloquear la pantalla */
+  .comments-scroll-wrapper {
+    max-height: 400px;
+    padding-right: 10px;
+  }
+
+  .comment-card {
+    padding: 20px;
+    /* Tarjetas más compactas */
+  }
+
+  /* Resetear la indentación de 57px */
+  .stars,
+  .comment-text {
+    padding-left: 0;
+  }
+
+  /* Formulario en columna */
+  .form-wrapper {
+    padding: 25px 20px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    /* Apilar Nombre y Estrellas */
+    gap: 15px;
+  }
+
+  /* Ajuste visual para las estrellas en móvil */
+  .rating-input {
+    justify-content: flex-start;
+    /* Alinear a la izquierda */
+  }
 }

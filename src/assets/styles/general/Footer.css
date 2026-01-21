@@ -5,15 +5,16 @@
   color: #f0f0f0;
   padding: 60px 20px 20px;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  margin-top: auto; /* Push footer to bottom */
+  margin-top: auto; 
 }
 
 .footer-content {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  /* Crea columnas automáticas que se ajustan al tamaño (responsive) */
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  /* Mantenemos tu grid inteligente, pero bajamos el mínimo a 220px 
+     para que en teléfonos grandes quepan 2 columnas si es posible */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 40px;
   margin-bottom: 40px;
 }
@@ -73,11 +74,12 @@
   text-decoration: none;
   transition: color 0.3s ease, padding-left 0.3s ease;
   cursor: pointer;
+  display: inline-block; /* Necesario para la animación de padding */
 }
 
 .footer-link:hover {
-  color: #D32F2F; /* Rojo al pasar el mouse */
-  padding-left: 5px; /* Pequeño desplazamiento elegante */
+  color: #D32F2F; 
+  padding-left: 5px; 
 }
 
 /* --- Contacto --- */
@@ -99,6 +101,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width: 100%;
 }
 
 .newsletter-input {
@@ -110,6 +113,7 @@
   width: 100%;
   outline: none;
   transition: border-color 0.3s;
+  box-sizing: border-box; /* Evita que el padding rompa el ancho */
 }
 
 .newsletter-input:focus {
@@ -130,7 +134,7 @@
 }
 
 .newsletter-button:hover {
-  background-color: #b71c1c; /* Rojo más oscuro */
+  background-color: #b71c1c; 
   transform: translateY(-2px);
 }
 
@@ -180,11 +184,51 @@
   gap: 20px;
 }
 
-/* --- Ajustes Responsive adicionales --- */
+/* =========================================
+   RESPONSIVO (Móviles - max 768px)
+   ========================================= */
 @media (max-width: 768px) {
+  
+  .footer-container {
+      padding-top: 40px; /* Menos espacio arriba */
+  }
+
+  .footer-content {
+      /* En celular forzamos 1 sola columna centrada */
+      grid-template-columns: 1fr;
+      gap: 35px; /* Espacio vertical entre secciones */
+      text-align: center;
+  }
+
+  .footer-column {
+      align-items: center; /* Centramos logo, inputs y botones */
+  }
+
+  /* Logo centrado */
+  .logo-title {
+      justify-content: center;
+  }
+
+  /* Contacto centrado */
+  .contact-row {
+      justify-content: center;
+  }
+
+  /* Redes sociales centradas */
+  .social-icons {
+      justify-content: center;
+  }
+
+  /* Ajuste del formulario en móvil */
+  .newsletter-form {
+      max-width: 350px; /* Que no se estire infinito si la pantalla es grande */
+  }
+
+  /* Links legales del fondo */
   .copyright-bar {
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      gap: 10px;
   }
 }

@@ -1,5 +1,5 @@
 :root {
-    --primary-red: #cc0808; /* Tu rojo corporativo */
+    --primary-red: #cc0808; 
     --text-dark: #1f1f1f;
     --text-light: #666666;
     --bg-white: #ffffff;
@@ -10,14 +10,14 @@
 .header-container {
     width: 100%;
     background-color: var(--bg-white);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.03); /* Sombra muy suave */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03); 
     position: relative;
     z-index: 1000;
 }
 
 /* --- BARRA SUPERIOR (IDIOMAS) --- */
 .top-bar {
-    background-color: #222; /* Negro suave */
+    background-color: #222; 
     color: #ccc;
     font-size: 0.75rem;
     padding: 8px 5%;
@@ -53,10 +53,11 @@
 .main-nav {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    height: 90px; /* Altura generosa para presencia */
+    justify-content: space-between; /* ESTO MANTIENE EL ORDEN ORIGINAL */
+    height: 90px; 
     padding: 0 5%;
     border-bottom: 1px solid var(--border-color);
+    background-color: white;
 }
 
 /* 1. Logo */
@@ -69,12 +70,12 @@
 }
 
 .brand-logo img {
-    height: 70px; /* Ajusta según tu logo real */
+    height: 70px; 
     width: auto;
     object-fit: contain;
 }
 
-/* 2. Enlaces del Menú */
+/* 2. Enlaces del Menú (Desktop) */
 .nav-links {
     display: flex;
     gap: 2.5rem;
@@ -101,7 +102,7 @@
     align-items: center;
     gap: 5px;
     transition: color 0.3s ease;
-    text-transform: uppercase; /* Toque más formal */
+    text-transform: uppercase; 
     letter-spacing: 0.5px;
 }
 
@@ -110,7 +111,6 @@
     color: var(--text-light);
 }
 
-/* Efectos Hover Menú */
 .nav-item:hover .nav-link {
     color: var(--primary-red);
 }
@@ -129,13 +129,14 @@
     background: white;
     min-width: 200px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    border-top: 3px solid var(--primary-red); /* Detalle de color */
+    border-top: 3px solid var(--primary-red); 
     padding: 10px 0;
     border-radius: 0 0 4px 4px;
     opacity: 0;
     visibility: hidden;
     transition: all 0.2s ease;
     list-style: none;
+    z-index: 10;
 }
 
 .nav-item:hover .dropdown-menu {
@@ -155,10 +156,10 @@
 .dropdown-menu li a:hover {
     background-color: #f9f9f9;
     color: var(--primary-red);
-    padding-left: 25px; /* Pequeño desplazamiento */
+    padding-left: 25px; 
 }
 
-/* 3. BOTÓN LOGIN (Estilo Minimalista/Premium) */
+/* 3. BOTÓN LOGIN (Desktop) */
 .nav-actions {
     display: flex;
     align-items: center;
@@ -169,46 +170,188 @@
     align-items: center;
     gap: 8px;
     background: transparent;
-    border: 1px solid #000; /* Borde fino y elegante */
+    border: 1px solid #666363; 
     color: #000;
     padding: 10px 22px;
     font-family: inherit;
     font-weight: 600;
     font-size: 0.9rem;
     cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-    position: relative;
-    overflow: hidden;
-    border-radius: 6px; /* Esquinas casi rectas para seriedad */
+    border-radius: 6px; 
+    
+    /* PROPIEDADES CLAVE PARA LA ANIMACIÓN */
+    position: relative; 
+    overflow: hidden; /* Para que el rojo no se salga del botón */
+    z-index: 1; /* Asegura que el texto quede encima */
+    transition: color .5s ease-in-out, border-color 0.5s ease-in-out;
 }
 
-/* Animación de relleno al hacer hover */
+/* El elemento fantasma que hace el "scroll" rojo */
 .btn-account::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 0%;
+    width: 0%; /* Empieza vacío (0 ancho) */
     height: 100%;
     background-color: var(--primary-red);
-    transition: width 0.4s ease;
-    z-index: -1;
+    z-index: -1; /* Se pone DETRÁS del texto */
+    
+    /* Aquí está la magia: aplicamos el cubic-bezier al ANCHO */
+    transition: width .8s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
+/* AL PASAR EL MOUSE (HOVER) */
 .btn-account:hover {
-    color: white;
-    border-color: var(--primary-red);
+    color: white; /* Texto cambia a blanco */
+    border-color: var(--primary-red); /* Borde se vuelve rojo */
     box-shadow: 0 4px 12px rgba(204, 8, 8, 0.2);
 }
 
+/* El fondo rojo se expande de izquierda a derecha */
 .btn-account:hover::before {
     width: 100%;
 }
 
+/* Animación extra: el icono crece un poco */
 .icon-user {
     transition: transform 0.3s ease;
 }
 
 .btn-account:hover .icon-user {
     transform: scale(1.1);
+}
+
+
+
+/* Elementos Ocultos por defecto en Desktop */
+.mobile-menu-icon {
+    display: none;
+}
+.mobile-only {
+    display: none;
+}
+
+/* =========================================================
+   RESPONSIVO (Solo modifica comportamiento en pantallas chicas)
+   ========================================================= */
+
+@media screen and (max-width: 900px) {
+    /* Ajustes para Tablets: Achicar espacios */
+    .nav-links {
+        gap: 1.5rem;
+    }
+    .brand-logo img {
+        height: 60px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* --- MÓVIL --- */
+    
+    .main-nav {
+        height: 70px;
+        padding: 0 20px;
+        position: relative;
+    }
+
+    .brand-logo img {
+        height: 50px;
+    }
+
+    /* Mostrar botón hamburguesa */
+    .mobile-menu-icon {
+        display: block;
+        cursor: pointer;
+        color: var(--text-dark);
+    }
+
+    /* Ocultar elementos de escritorio */
+    .desktop-only {
+        display: none;
+    }
+
+    /* Transformar la lista de enlaces en un menú vertical */
+    .nav-links {
+        position: absolute;
+        top: 70px; /* Altura del navbar móvil */
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 70px); /* Ocupa el resto de la pantalla */
+        background-color: white;
+        flex-direction: column;
+        align-items: flex-start; /* Alinear a la izquierda */
+        padding: 20px 0;
+        gap: 0;
+        border-top: 1px solid #eee;
+        
+        /* Oculto por defecto (Slide effect) */
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        opacity: 0;
+    }
+
+    /* Clase activa para mostrar el menú */
+    .nav-links.active {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    .nav-item {
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        align-items: flex-start;
+        border-bottom: 1px solid #f5f5f5;
+    }
+
+    .nav-link {
+        width: 100%;
+        padding: 15px 25px;
+        justify-content: space-between; /* Flecha a la derecha */
+    }
+
+    /* Dropdowns en móvil: estáticos y desplazados */
+    .dropdown-menu {
+        position: static;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        width: 100%;
+        padding: 0;
+        display: none; /* Oculto por defecto */
+        background-color: #fafafa;
+    }
+
+    /* Mostrar dropdown al hacer hover/click (simple CSS fix) */
+    .nav-item:hover .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-menu li a {
+        padding-left: 40px; /* Indentación */
+    }
+
+    /* Botón Mi Cuenta en Móvil */
+    .mobile-only {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        height: 90px;
+    }
+
+    .btn-account-mobile {
+        width: 80%;
+        padding: 12px;
+        background-color: var(--primary-red);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-weight: 600;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
 }

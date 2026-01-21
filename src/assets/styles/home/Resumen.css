@@ -1,39 +1,142 @@
+/* =========================================
+   ESTILOS BASE (Desktop)
+   ========================================= */
 .content-resumen {
-    max-width: 100%;
+    width: 100%;
+    max-width: 1200px;
+    /* Limitamos el ancho máximo general para pantallas muy grandes */
+    margin: 0 auto;
+    /* Centramos el contenedor */
     background-color: transparent;
     display: flex;
-    justify-content: center; 
-    
-}
-
-.grid-text {
-    display: grid;
-    grid-template-columns: max-content 1fr;
-    gap: .6rem 3.2rem;
-    padding: 1.3rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* Importante: permite que los elementos bajen si no caben */
+    gap: 2rem;
+    /* Espacio entre el texto y el mapa */
+    padding: 2rem 5%;
+    /* Padding lateral para que no pegue a los bordes */
 }
 
 .content-text-resumen {
-    width: 40rem;
+    flex: 1 1 30rem;
+    /* Crece y se encoge, base de 30rem */
+    max-width: 40rem;
+    /* Tu ancho original como máximo */
     height: max-content;
     background-color: transparent;
-    padding: 1.3rem;
+    /* Quitamos el padding aquí y lo manejamos en el contenedor padre o con gap */
 }
 
 .content-text-resumen p {
     text-align: justify;
-    line-height: 1.5;
+    line-height: 1.6;
+    /* Un poco más de aire para leer mejor */
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 2rem;
 }
 
+/* Grilla de datos (Capital, Idioma, etc) */
+.grid-text {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.8rem 3rem;
+    /* Reduje un poco el gap horizontal para prevenir desbordes */
+    padding: 0;
+}
+
+.grid-text span {
+    font-size: 0.95rem;
+}
+
+/* Estilos para las etiquetas (negrita o color diferente opcional) */
+.grid-text span:nth-child(odd) {
+    font-weight: 600;
+    color: #151633;
+    /* Un toque de tu color corporativo */
+}
+
+/* Mapa */
 .content-map {
-    width: 40rem;
-    height: inherit;
+    flex: 1 1 25rem;
+    /* Flexible */
+    max-width: 40rem;
+    height: auto;
+    /* Altura automática para mantener proporción */
     background-color: transparent;
+    display: flex;
+    align-items: center;
+    /* Centrar verticalmente respecto al texto */
+    justify-content: center;
 }
 
 .content-map img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+    height: auto;
+    /* Importante para que la imagen no se deforme */
+    object-fit: contain;
+    border-radius: 8px;
+    /* Un pequeño borde redondeado estético */
+}
+
+/* =========================================
+   RESPONSIVO (Tablets - max 1024px)
+   ========================================= */
+@media screen and (max-width: 1024px) {
+    .content-resumen {
+        padding: 2rem;
+        gap: 3rem;
+    }
+
+    /* En tablets, forzamos que se pongan uno encima del otro */
+    .content-text-resumen,
+    .content-map {
+        flex: 1 1 100%;
+        /* Ocupan todo el ancho disponible */
+        max-width: 100%;
+    }
+
+    .content-map {
+        order: -1;
+        /* OPCIONAL: Si quieres que el mapa salga arriba del texto en tablet, descomenta esto */
+        margin-bottom: 1rem;
+    }
+}
+
+/* =========================================
+   RESPONSIVO (Móviles - max 768px)
+   ========================================= */
+@media screen and (max-width: 768px) {
+    .content-resumen {
+        padding: 1.5rem 1rem;
+        /* Menos padding lateral */
+    }
+
+    .content-text-resumen p {
+        font-size: 0.9rem;
+        /* Texto un poco más chico */
+        text-align: left;
+        /* A veces justificado se ve mal en móvil (ríos de espacios) */
+    }
+
+    .grid-text {
+        gap: 0.5rem 1.5rem;
+        /* Reducimos el espacio entre columnas */
+        font-size: 0.9rem;
+    }
+
+    /* Si los datos no caben, hacemos que se pongan en columna (Capital arriba, Tokio abajo) */
+    @media (max-width: 400px) {
+        .grid-text {
+            grid-template-columns: 1fr;
+            /* Una sola columna */
+            gap: 0.2rem;
+        }
+
+        /* Damos un poco de espacio extra antes del siguiente título */
+        .grid-text span:nth-child(even) {
+            margin-bottom: 0.8rem;
+        }
+    }
 }
