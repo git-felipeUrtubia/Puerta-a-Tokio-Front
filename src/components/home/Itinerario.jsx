@@ -14,7 +14,11 @@ export const Itinerario = () => {
         setTours(data)
     }
     useEffect(() => {
-        fetchTours();
+        try {
+            fetchTours();
+        } catch (error) {
+            console.log("Error: ", error)
+        }
     },[])
 
     const tour = {
