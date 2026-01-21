@@ -79,7 +79,7 @@ export const NavBar = () => {
 
                 {/* Sección Login (Diseño Premium) */}
                 <div className='nav-actions'>
-                    <button className='btn-account' onClick={() => nav('/login')}>
+                    <button className='btn-account' onClick={() => nav('/home/login')}>
                         <User size={18} className="icon-user" />
                         <span>Mi Cuenta</span>
                     </button>

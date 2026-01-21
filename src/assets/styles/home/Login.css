@@ -1,0 +1,153 @@
+/* Variables de color basadas en tu diseño */
+:root {
+  --brand-red: #D32F2F; /* Rojo estilo Torii */
+  --brand-red-hover: #b71c1c;
+  --text-dark: #333333;
+  --text-light: #666666;
+  --bg-light: #f9f9f9;
+  --white: #ffffff;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh; /* Ocupa casi toda la pantalla */
+  background-color: var(--bg-light);
+  padding: 20px;
+}
+
+.login-card {
+  background-color: var(--white);
+  padding: 3rem;
+  border-radius: 12px; /* Bordes redondeados como tus tarjetas de servicios */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); /* Sombra suave y elegante */
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+/* Efecto opcional: flotar un poco al pasar el mouse, como tus cards */
+.login-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.login-logo {
+  width: 150px; /* Ajusta según el tamaño real de tu logo */
+  height: auto;
+}
+
+.login-header h2 {
+  color: var(--text-dark);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.login-header p {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+
+/* Estilos del Formulario */
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-dark);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  outline: none;
+  background-color: #fcfcfc;
+}
+
+.form-group input:focus {
+  border-color: var(--brand-red); /* Borde rojo al escribir */
+  background-color: #fff;
+}
+
+/* Opciones (Recordarme / Olvidé contraseña) */
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  color: var(--text-light);
+  cursor: pointer;
+}
+
+.checkbox-container input {
+  margin-right: 5px;
+  accent-color: var(--brand-red);
+}
+
+.forgot-password {
+  color: var(--brand-red);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+/* Botón Principal */
+.btn-login {
+  width: 100%;
+  padding: 14px;
+  background-color: var(--brand-red);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.btn-login:hover {
+  background-color: var(--brand-red-hover);
+}
+
+.btn-login:active {
+  transform: scale(0.98);
+}
+
+/* Footer del login */
+.login-footer {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+.login-footer a {
+  color: var(--brand-red);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.login-footer a:hover {
+  text-decoration: underline;
+}

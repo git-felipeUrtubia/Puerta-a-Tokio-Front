@@ -5,6 +5,7 @@ import { NavBar } from './components/general/NavBar.jsx'
 import { Footer } from './components/general/Footer.jsx'
 import { Home } from './components/home/Home.jsx'
 import { TravelDetails } from './components/travel_details/TravelDetails.jsx'
+import { Login } from './components/home/Login.jsx'
 
 export const App = () => {
 
@@ -17,6 +18,7 @@ export const App = () => {
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/home" element={<Home />} />
           <Route path="/home/travel-details" element={<TravelDetails />} />
+          <Route path="/home/login" element={<Login />} />
 
         </Routes>
         <Footer />

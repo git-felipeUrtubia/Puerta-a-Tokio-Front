@@ -7,6 +7,8 @@ export const Galeria = ({ galerys }) => {
         return <p className="text-center">No hay imágenes para mostrar.</p>;
     }
 
+    console.log("IMAGENES: ", galerys)
+
     return (
         <div>
             <div className='title'>
