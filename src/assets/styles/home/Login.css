@@ -142,12 +142,14 @@
   color: var(--text-light);
 }
 
-.login-footer a {
+.login-footer button {
+  all: unset;
   color: var(--brand-red);
   text-decoration: none;
   font-weight: 600;
+  cursor: pointer;
 }
 
-.login-footer a:hover {
+.login-footer button:hover {
   text-decoration: underline;
 }

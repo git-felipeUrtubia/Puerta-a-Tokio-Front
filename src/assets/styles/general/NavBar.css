@@ -70,7 +70,7 @@
 }
 
 .brand-logo img {
-    height: 70px; 
+    height: 130px; 
     width: auto;
     object-fit: contain;
 }
@@ -342,6 +342,7 @@
     }
 
     .btn-account-mobile {
+        text-decoration: none;
         width: 80%;
         padding: 12px;
         background-color: var(--primary-red);

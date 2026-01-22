@@ -1,0 +1,192 @@
+:root {
+    --primary-red: #cc0808;
+    --text-dark: #1f1f1f;
+    --text-light: #666666;
+    --border-color: #e0e0e0;
+    --bg-hover: #f9f9f9;
+    --white: #ffffff;
+}
+
+/* Contenedor principal para posicionar el dropdown */
+.session-container {
+    position: relative;
+    display: inline-block;
+}
+
+/* --- ESTILO CÁPSULA (Igual que antes + estado activo) --- */
+.session-pill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 12px 5px 5px;
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.session-pill:hover,
+.session-pill.active {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: #d0d0d0;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    background-color: var(--primary-red);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.user-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    max-width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Animación de la flecha */
+.chevron-icon {
+    color: #888;
+    transition: transform 0.3s ease;
+}
+
+.session-pill.active .chevron-icon {
+    transform: rotate(180deg);
+    color: var(--primary-red);
+}
+
+/* --- MENÚ DESPLEGABLE --- */
+.session-dropdown {
+    position: absolute;
+    top: 120%;
+    /* Un poco separado del botón */
+    right: 0;
+    width: 200px;
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+    padding: 8px;
+    z-index: 1000;
+
+    /* Pequeña animación de entrada */
+    animation: fadeInSlide 0.2s ease-out forwards;
+    transform-origin: top right;
+}
+
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Items del menú */
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+
+    color: var(--text-dark);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    /* Para el Link */
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.dropdown-item:hover {
+    background-color: var(--bg-hover);
+    color: var(--primary-red);
+}
+
+.item-icon {
+    color: #888;
+    transition: color 0.2s;
+}
+
+.dropdown-item:hover .item-icon {
+    color: var(--primary-red);
+}
+
+/* Estilo específico para logout (opcional) */
+.dropdown-item.logout {
+    color: var(--text-light);
+}
+
+.dropdown-item.logout:hover {
+    background-color: #fff0f0;
+    /* Fondo rojo muy suave */
+    color: #d32f2f;
+}
+
+.dropdown-divider {
+    height: 1px;
+    background-color: #f0f0f0;
+    margin: 6px 0;
+}
+
+/* --- RESPONSIVO --- */
+@media screen and (max-width: 768px) {
+    .session-pill {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        justify-content: center;
+        border: none;
+    }
+
+    .session-pill.active {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .user-avatar {
+        width: 38px;
+        height: 38px;
+    }
+
+    .user-info {
+        display: none;
+        /* Oculta nombre y flecha en móvil */
+    }
+
+    /* Ajuste del menú en móvil para que no se salga de pantalla */
+    .session-dropdown {
+        right: -10px;
+        /* Un pequeño ajuste */
+        width: 180px;
+    }
+}

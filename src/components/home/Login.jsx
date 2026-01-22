@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { LoginUser } from '../../services/Auth.js';
 import '../../assets/styles/home/Login.css'; // Importamos los estilos
 import logo from '../../../public/logo.png'; // Asegúrate de poner la ruta correcta a tu logo
 
 export const Login = () => {
+
+    const nav = useNavigate()
+
     const [formData, setFormData] = useState({
-        email: '',
+        username: '',
         password: ''
     });
 
@@ -16,10 +21,23 @@ export const Login = () => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Datos de login:', formData);
-        // Aquí iría tu lógica de autenticación
+
+        try {
+            let data = await LoginUser(formData);
+
+            alert("Logueado con exito!");
+
+            localStorage.setItem('token', JSON.stringify(data))
+
+            nav("/home");
+            return;
+        } catch (error) {
+            alert(`Usuario y/o contraseña incorrectos, ${error}`)
+
+        }
+
     };
 
     return (
@@ -37,10 +55,10 @@ export const Login = () => {
                         <label htmlFor="email">Correo Electrónico</label>
                         <input
                             type="email"
-                            id="email"
-                            name="email"
+                            id="username"
+                            name="username"
                             placeholder="ejemplo@correo.com"
-                            value={formData.email}
+                            value={formData.username}
                             onChange={handleChange}
                             required
                         />
@@ -49,7 +67,7 @@ export const Login = () => {
                     <div className="form-group">
                         <label htmlFor="password">Contraseña</label>
                         <input
-                            type="password"
+                            type="text"
                             id="password"
                             name="password"
                             placeholder="••••••••"
@@ -74,7 +92,7 @@ export const Login = () => {
                 </form>
 
                 <div className="login-footer">
-                    <p>¿Aún no tienes cuenta? <a href="#">Regístrate aquí</a></p>
+                    <p>¿Aún no tienes cuenta? <button onClick={() => nav("/home/register")}>Regístrate aquí</button></p>
                 </div>
             </div>
         </div>

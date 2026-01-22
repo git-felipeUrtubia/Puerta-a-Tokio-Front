@@ -9,17 +9,17 @@ export const Itinerario = () => {
 
     const [tours, setTours] = useState([])
 
-    const fetchTours = async () => {
-        const data = await getAllTours();
-        setTours(data)
-    }
-    useEffect(() => {
-        try {
-            fetchTours();
-        } catch (error) {
-            console.log("Error: ", error)
-        }
-    },[])
+    // const fetchTours = async () => {
+    //     const data = await getAllTours();
+    //     setTours(data)
+    // }
+    // useEffect(() => {
+    //     try {
+    //         fetchTours();
+    //     } catch (error) {
+    //         console.log("Error: ", error)
+    //     }
+    // },[])
 
     const tour = {
         "id_tour": 1,

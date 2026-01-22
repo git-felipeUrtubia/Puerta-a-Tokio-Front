@@ -6,6 +6,7 @@ import { Footer } from './components/general/Footer.jsx'
 import { Home } from './components/home/Home.jsx'
 import { TravelDetails } from './components/travel_details/TravelDetails.jsx'
 import { Login } from './components/home/Login.jsx'
+import { Register } from './components/home/Register.jsx'
 
 export const App = () => {
 
@@ -19,6 +20,7 @@ export const App = () => {
           <Route path="/home" element={<Home />} />
           <Route path="/home/travel-details" element={<TravelDetails />} />
           <Route path="/home/login" element={<Login />} />
+          <Route path="/home/register" element={<Register />} />
 
         </Routes>
         <Footer />

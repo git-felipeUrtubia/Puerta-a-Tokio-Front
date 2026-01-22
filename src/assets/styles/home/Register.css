@@ -1,0 +1,194 @@
+:root {
+    --brand-red: #cc0808;
+    /* Tu rojo corporativo */
+    --brand-red-hover: #b71c1c;
+    --text-dark: #1f1f1f;
+    --text-light: #666666;
+    --bg-light: #f9f9f9;
+    --white: #ffffff;
+    --border-color: #e5e5e5;
+}
+
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    /* Altura completa */
+    background-color: var(--bg-light);
+    padding: 40px 20px;
+}
+
+.register-card {
+    background-color: var(--white);
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    /* Sombra suave estilo "Card" */
+    width: 100%;
+    max-width: 500px;
+    /* Un poco más ancho que el login para comodidad */
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+/* Efecto hover sutil en la tarjeta */
+.register-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+}
+
+.register-logo {
+    width: 150px;
+    height: auto;
+}
+
+.register-header h2 {
+    color: var(--text-dark);
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.register-header p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+}
+
+/* Estilos del Formulario */
+.register-form {
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+/* Para poner contraseñas una al lado de la otra */
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-row .form-group {
+    flex: 1;
+    /* Ocupan el mismo ancho */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    outline: none;
+    background-color: #fcfcfc;
+    box-sizing: border-box;
+    /* Importante para que el padding no rompa el ancho */
+}
+
+.form-group input:focus {
+    border-color: var(--brand-red);
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(204, 8, 8, 0.1);
+    /* Resplandor rojo suave */
+}
+
+/* Checkbox de Términos */
+.form-options {
+    margin-bottom: 1.5rem;
+    font-size: 0.85rem;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    color: var(--text-light);
+    cursor: pointer;
+    gap: 8px;
+}
+
+.checkbox-container input {
+    accent-color: var(--brand-red);
+    /* Checkbox rojo */
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.checkbox-container a {
+    color: var(--brand-red);
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 3px;
+}
+
+.checkbox-container a:hover {
+    text-decoration: underline;
+}
+
+/* Botón Principal */
+.btn-register {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--brand-red);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-register:hover {
+    background-color: var(--brand-red-hover);
+}
+
+.btn-register:active {
+    transform: scale(0.98);
+}
+
+/* Footer del registro */
+.register-footer {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    border-top: 1px solid var(--border-color);
+    padding-top: 1.5rem;
+}
+
+.register-footer a {
+    color: var(--brand-red);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register-footer a:hover {
+    text-decoration: underline;
+}
+
+/* --- RESPONSIVO --- */
+@media (max-width: 600px) {
+    .register-card {
+        padding: 2rem 1.5rem;
+    }
+
+    /* En celular, las contraseñas van una debajo de otra */
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
