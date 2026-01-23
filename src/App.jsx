@@ -7,6 +7,7 @@ import { Home } from './components/home/Home.jsx'
 import { TravelDetails } from './components/travel_details/TravelDetails.jsx'
 import { Login } from './components/home/Login.jsx'
 import { Register } from './components/home/Register.jsx'
+import { Reservar } from './components/travel_details/Reservar.jsx'
 
 export const App = () => {
 
@@ -21,6 +22,7 @@ export const App = () => {
           <Route path="/home/travel-details" element={<TravelDetails />} />
           <Route path="/home/login" element={<Login />} />
           <Route path="/home/register" element={<Register />} />
+          <Route path="/home/travel-details/pay" element={<Reservar />} />
 
         </Routes>
         <Footer />

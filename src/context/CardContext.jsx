@@ -6,17 +6,22 @@ const CartContext = createContext()
 export const CardProvider = ({ children }) => {
 
     const [travelSelected, setTravelSelected] = useState(0);
+    const [travelToPay, setTravelToPay] = useState(null)
 
     const viajeSeleccionado = ( idTravel ) => {
         setTravelSelected(idTravel)
     }
 
-
+    const addTravelToPay = (travel) => {
+        setTravelToPay(travel)
+    }
 
     return (
         <CartContext.Provider value={{
             viajeSeleccionado,
-            travelSelected
+            travelSelected,
+            addTravelToPay,
+            travelToPay
         }}>
             { children }
         </CartContext.Provider>

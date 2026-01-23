@@ -1,0 +1,346 @@
+:root {
+    --primary-red: #cc0808;
+    --primary-red-hover: #b71c1c;
+    --text-dark: #1f1f1f;
+    --text-gray: #666666;
+    --bg-light: #f8f9fa;
+    --white: #ffffff;
+    --border-color: #e5e5e5;
+    --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.reservar-section {
+    padding: 60px 20px;
+    background-color: var(--bg-light);
+    min-height: 80vh;
+    /* Ocupa buena parte de la pantalla */
+}
+
+.reservar-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.reservar-title {
+    font-size: 2rem;
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+    text-align: center;
+    font-weight: 700;
+}
+
+/* --- GRID LAYOUT --- */
+.reservar-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    /* El formulario es un poco más ancho que el resumen */
+    gap: 30px;
+    align-items: start;
+}
+
+/* --- ESTILOS GENERALES DE TARJETAS --- */
+.summary-card,
+.payment-card {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-card);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.card-header-title {
+    font-size: 1.25rem;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* --- COLUMNA IZQUIERDA: RESUMEN --- */
+.tour-preview {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.tour-thumb {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.tour-info h4 {
+    font-size: 1rem;
+    margin: 0 0 5px 0;
+    color: var(--text-dark);
+}
+
+.tour-info p {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    margin: 0;
+}
+
+.price-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+    color: var(--text-gray);
+}
+
+.divider {
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 10px 0;
+}
+
+.price-row.total {
+    color: var(--text-dark);
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.total-amount {
+    color: var(--primary-red);
+    font-size: 1.4rem;
+}
+
+.security-badge {
+    margin-top: 30px;
+    display: flex;
+    gap: 10px;
+    background-color: #f0fdf4;
+    /* Verde muy claro para seguridad */
+    padding: 12px;
+    border-radius: 6px;
+    color: #166534;
+    font-size: 0.8rem;
+    align-items: center;
+}
+
+/* --- COLUMNA DERECHA: FORMULARIO --- */
+.cards-accepted {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.card-brand {
+    background: #f3f3f3;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #555;
+}
+
+.payment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.input-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+/* Wrapper para poner el icono dentro del input */
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 12px;
+    color: #999;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    /* Padding izquierdo extra para el icono */
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.input-wrapper input:focus {
+    border-color: var(--primary-red);
+    box-shadow: 0 0 0 3px rgba(204, 8, 8, 0.1);
+}
+
+/* Botón de Pagar */
+.pay-button {
+    margin-top: 10px;
+    width: 100%;
+    padding: 15px;
+    background-color: var(--primary-red);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.pay-button:hover {
+    background-color: var(--primary-red-hover);
+}
+
+.pay-button:active {
+    transform: scale(0.98);
+}
+
+.terms-text {
+    font-size: 0.8rem;
+    color: #888;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.terms-text a {
+    color: var(--text-dark);
+    text-decoration: underline;
+}
+
+/* =========================================
+   RESPONSIVO (Móviles y Tablets)
+   ========================================= */
+@media screen and (max-width: 900px) {
+    .reservar-grid {
+        grid-template-columns: 1fr;
+        /* Una sola columna */
+    }
+
+    /* Invertimos el orden visual en móvil si quieres que el resumen salga primero o después */
+    /* Por defecto saldrá: Resumen arriba, Pago abajo, lo cual es correcto */
+
+    .summary-card {
+        border-bottom: 4px solid var(--primary-red);
+        /* Detalle visual */
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .reservar-section {
+        padding: 30px 15px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        /* Inputs de fecha y cvc uno abajo del otro en pantallas muy chicas */
+        gap: 15px;
+    }
+
+    .reservar-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* Agrega esto al principio o final de Reservar.css */
+
+.btn-back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+  border: none;
+  color: var(--text-gray); /* O usa #666 si la variable no carga aquí */
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 20px; /* Separación del título */
+  padding: 0;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-back:hover {
+  color: var(--primary-red); /* Tu rojo #cc0808 */
+  transform: translateX(-5px); /* Pequeño movimiento a la izquierda */
+}
+
+/* --- SELECTOR DE PERSONAS --- */
+.people-selector {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+}
+
+.people-label {
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+}
+
+.counter-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: white;
+    padding: 4px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+}
+
+.counter-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background-color: var(--primary-red);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.counter-btn:hover {
+    background-color: var(--primary-red-hover);
+}
+
+.counter-btn:disabled {
+    background-color: #e5e5e5;
+    cursor: not-allowed;
+    color: #999;
+}
+
+.people-count {
+    font-weight: 700;
+    font-size: 1rem;
+    min-width: 20px;
+    text-align: center;
+    color: var(--text-dark);
+}

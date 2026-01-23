@@ -9,12 +9,20 @@ export const NavBar = () => {
     const nav = useNavigate();
     const [isOpen, setIsOpen] = useState(false); // Estado para el menú móvil
     const [state, setState] = useState(false);
+    const [username, setUsername] = useState('')
 
-    const data = JSON.parse(localStorage.getItem("token"));
+    const res = JSON.parse(localStorage.getItem("token"));
 
     useEffect(() => {
-        setState(data ? true : false)
-    }, [data])
+        if (res && res.data) {
+            setState(true);
+            setUsername(`${res.data.firstName} ${res.data.lastName}`);
+        } else {
+            setState(false);
+            setUsername(''); // Limpia el nombre si no hay sesión
+        }
+    }, [res])
+
 
     const Session = () => {
         if (!state) {
@@ -27,7 +35,7 @@ export const NavBar = () => {
                 </div>
             )
         }
-        return (<SessionTrue userName='Felipe Urtubia' />)
+        return (<SessionTrue userName={username} />)
     }
 
     return (

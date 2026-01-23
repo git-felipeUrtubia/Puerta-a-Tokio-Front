@@ -1,0 +1,148 @@
+:root {
+    --primary-red: #cc0808;
+    --primary-red-hover: #b71c1c;
+    --text-dark: #1f1f1f;
+    --text-gray: #666666;
+    --bg-light: #f9f9f9;
+    --white: #ffffff;
+    --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Contenedor principal que centra todo */
+.exception-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh; /* Ocupa buena altura pero no toda si hay header/footer */
+    padding: 20px;
+    background-color: var(--bg-light);
+}
+
+/* La tarjeta blanca */
+.exception-card {
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: var(--shadow-card);
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,0.03);
+}
+
+/* Icono */
+.exception-icon-wrapper {
+    margin-bottom: 20px;
+    color: var(--primary-red);
+    background-color: #fff0f0; /* Rojo muy pálido de fondo */
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.exception-title {
+    font-size: 1.8rem;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.exception-message {
+    font-size: 1rem;
+    color: var(--text-gray);
+    line-height: 1.6;
+    margin-bottom: 35px;
+}
+
+/* Botones */
+.exception-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.btn-primary-exception {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 14px;
+    background-color: var(--primary-red);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-primary-exception:hover {
+    background-color: var(--primary-red-hover);
+    transform: translateY(-2px);
+}
+
+.btn-secondary-exception {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 14px;
+    background-color: transparent;
+    color: var(--text-dark);
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-secondary-exception:hover {
+    border-color: var(--text-dark);
+    background-color: #f8f8f8;
+}
+
+.btn-back-exception {
+    background: none;
+    border: none;
+    color: var(--text-gray);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    padding: 10px;
+    transition: color 0.3s;
+}
+
+.btn-back-exception:hover {
+    color: var(--primary-red);
+    text-decoration: underline;
+}
+
+/* Animación de entrada suave */
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+    .exception-card {
+        padding: 30px 20px;
+    }
+    .exception-title {
+        font-size: 1.5rem;
+    }
+}

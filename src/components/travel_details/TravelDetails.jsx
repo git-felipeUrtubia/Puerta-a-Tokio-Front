@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { MapPin, Calendar, Clock, Star, CheckCircle } from 'lucide-react';
 import { getAllTours } from '../../services/Catalog.js';
 import { useCart } from '../../context/CardContext';
+import { useNavigate } from 'react-router-dom';
 import '../../assets/styles/travel_details/TravelDetails.css';
 
 export const TravelDetails = () => {
 
-    const { travelSelected } = useCart();
+    const nav = useNavigate();
+
+    const { travelSelected, addTravelToPay } = useCart();
 
     const [activeTab, setActiveTab] = useState('resumen');
     const [trip, setTrip] = useState(null);
@@ -14,17 +17,18 @@ export const TravelDetails = () => {
     const [tours, setTours] = useState([])
 
     const fetchTours = async () => {
-        const data = await getAllTours() 
+        const data = await getAllTours()
         setTours(data)
     }
 
     useEffect(() => {
         fetchTours();
-    },[])
+    }, [])
 
     useEffect(() => {
-    
-        const mockDataFromDB = tours.find(t => t.id == travelSelected)
+
+        const mockDataFromDB = tours.find(t => t.id_tour == travelSelected)
+        // console.log(mockDataFromDB)
 
         setTimeout(() => {
             setTrip(mockDataFromDB);
@@ -46,13 +50,14 @@ export const TravelDetails = () => {
         ));
     };
 
+
     return (
         <div className="travel-details-container">
 
             {/* HERO SECTION */}
             <div className="td-hero">
                 {/* Usamos trip.image que viene de tu objeto */}
-                <img src={trip.image} alt={trip.title} className="td-hero-bg" />
+                <img src={trip.image_card} alt={trip.title} className="td-hero-bg" />
                 <div className="td-hero-overlay">
                     <div className="td-container">
                         <span className="td-badge">{trip.destinations}</span>
@@ -114,7 +119,7 @@ export const TravelDetails = () => {
                                     <Calendar className="td-icon-accent" />
                                     <div>
                                         <h4>Disponibilidad</h4>
-                                        <p>Todo el año</p>
+                                        <p>{trip.vigencia}</p>
                                     </div>
                                 </div>
                             </div>
@@ -144,11 +149,13 @@ export const TravelDetails = () => {
                                         <h4>Inicio</h4>
                                         <p>Llegada y recepción.</p>
                                     </div>
+
                                     <div className="td-timeline-item">
                                         <div className="td-timeline-marker"></div>
                                         <h4>Durante el viaje</h4>
                                         <p>Recorrido por {trip.route}.</p>
                                     </div>
+
                                     <div className="td-timeline-item">
                                         <div className="td-timeline-marker"></div>
                                         <h4>Fin</h4>
@@ -164,9 +171,9 @@ export const TravelDetails = () => {
                         <div className="td-gallery fade-in">
                             {/* Como solo tenemos 1 imagen en el objeto, la mostramos en grande */}
                             <div className="td-gallery-hero">
-                                <img src={trip.image} alt="Vista principal" />
-                                <img src={trip.image} alt="Vista principal" />
-                                <img src={trip.image} alt="Vista principal" />
+                                <img src={trip.galeries[0]} alt="Vista principal" />
+                                <img src={trip.galeries[1]} alt="Vista principal" />
+                                <img src={trip.galeries[2]} alt="Vista principal" />
 
                                 <span className="gallery-caption">Vista principal del destino</span>
                             </div>
@@ -189,7 +196,10 @@ export const TravelDetails = () => {
 
                         <hr className="td-divider" />
 
-                        <button className="td-btn td-btn-primary">Reservar Ahora</button>
+                        <button className="td-btn td-btn-primary" onClick={() => {
+                            addTravelToPay(trip)
+                            nav("/home/travel-details/pay")
+                        }}>Reservar Ahora</button>
                         <button className="td-btn td-btn-outline">Consultar Dudas</button>
                     </div>
                 </div>
