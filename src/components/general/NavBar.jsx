@@ -19,10 +19,18 @@ export const NavBar = () => {
             setUsername(`${res.data.firstName} ${res.data.lastName}`);
         } else {
             setState(false);
-            setUsername(''); // Limpia el nombre si no hay sesión
+            setUsername('');
         }
-    }, [res])
+    }, [res]);
 
+    // Función para cerrar sesión
+    const handleLogout = () => {
+        localStorage.removeItem("token"); // O la key que uses
+        localStorage.removeItem("user");
+        setState(false);
+        setUsername('');
+        nav('/home/login');
+    };
 
     const Session = () => {
         if (!state) {
@@ -35,7 +43,8 @@ export const NavBar = () => {
                 </div>
             )
         }
-        return (<SessionTrue userName={username} />)
+        // Pasamos la función de logout al componente
+        return (<SessionTrue userName={username} onLogout={handleLogout} />)
     }
 
     return (
@@ -54,17 +63,20 @@ export const NavBar = () => {
             {/* Navegación Principal */}
             <nav className='main-nav'>
 
-                {/* Logo */}
-                <div className='brand-logo' onClick={() => nav('/home')}>
+                {/* Logo: Se oculta en móvil SOLO si hay sesión iniciada (para que la hamburguesa quede a la izquierda) */}
+                <div
+                    className={`brand-logo ${state ? 'hidden-mobile-loggedin' : ''}`}
+                    onClick={() => nav('/home')}
+                >
                     <img src={logo} alt="Puerta a Tokio Logo" />
                 </div>
 
-                {/* Botón Hamburguesa (Solo visible en Móvil) */}
+                {/* Botón Hamburguesa */}
                 <div className="mobile-menu-icon" onClick={() => setIsOpen(!isOpen)}>
                     {isOpen ? <X size={28} /> : <Menu size={28} />}
                 </div>
 
-                {/* Menú Central - Se agrega la clase 'active' si isOpen es true */}
+                {/* Menú Desplegable */}
                 <ul className={`nav-links ${isOpen ? 'active' : ''}`}>
                     <li className='nav-item'>
                         <a href="#" className="nav-link">
@@ -113,15 +125,17 @@ export const NavBar = () => {
                         </ul>
                     </li>
 
-                    {/* Botón Mi Cuenta (Versión Móvil dentro del menú) */}
-                    <li className='nav-item mobile-only'>
-                        <a className='btn-account-mobile' href='/home/login'>
-                            <User size={18} /> Mi Cuenta
-                        </a>
-                    </li>
+                    {/* Botón Mi Cuenta en el menú móvil: SOLO SE MUESTRA SI NO HAY SESIÓN */}
+                    {!state && (
+                        <li className='nav-item mobile-only'>
+                            <a className='btn-account-mobile' href='/home/login'>
+                                <User size={18} /> Mi Cuenta
+                            </a>
+                        </li>
+                    )}
                 </ul>
 
-                {/* Sección Login Desktop (Se oculta en móvil) */}
+                {/* Sección Login/Avatar (Siempre visible en la barra) */}
                 {Session()}
 
             </nav>

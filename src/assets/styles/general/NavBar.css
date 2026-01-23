@@ -1,5 +1,5 @@
 :root {
-    --primary-red: #cc0808; 
+    --primary-red: #cc0808;
     --text-dark: #1f1f1f;
     --text-light: #666666;
     --bg-white: #ffffff;
@@ -10,14 +10,14 @@
 .header-container {
     width: 100%;
     background-color: var(--bg-white);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.03); 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
     position: relative;
     z-index: 1000;
 }
 
 /* --- BARRA SUPERIOR (IDIOMAS) --- */
 .top-bar {
-    background-color: #222; 
+    background-color: #222;
     color: #ccc;
     font-size: 0.75rem;
     padding: 8px 5%;
@@ -53,8 +53,8 @@
 .main-nav {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* ESTO MANTIENE EL ORDEN ORIGINAL */
-    height: 90px; 
+    justify-content: space-between;
+    height: 90px;
     padding: 0 5%;
     border-bottom: 1px solid var(--border-color);
     background-color: white;
@@ -70,7 +70,7 @@
 }
 
 .brand-logo img {
-    height: 130px; 
+    height: 130px;
     width: auto;
     object-fit: contain;
 }
@@ -102,7 +102,7 @@
     align-items: center;
     gap: 5px;
     transition: color 0.3s ease;
-    text-transform: uppercase; 
+    text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
@@ -128,8 +128,8 @@
     transform: translateX(-50%);
     background: white;
     min-width: 200px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    border-top: 3px solid var(--primary-red); 
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    border-top: 3px solid var(--primary-red);
     padding: 10px 0;
     border-radius: 0 0 4px 4px;
     opacity: 0;
@@ -156,7 +156,7 @@
 .dropdown-menu li a:hover {
     background-color: #f9f9f9;
     color: var(--primary-red);
-    padding-left: 25px; 
+    padding-left: 25px;
 }
 
 /* 3. BOTÓN LOGIN (Desktop) */
@@ -170,50 +170,43 @@
     align-items: center;
     gap: 8px;
     background: transparent;
-    border: 1px solid #666363; 
+    border: 1px solid #666363;
     color: #000;
     padding: 10px 22px;
     font-family: inherit;
     font-weight: 600;
     font-size: 0.9rem;
     cursor: pointer;
-    border-radius: 6px; 
-    
-    /* PROPIEDADES CLAVE PARA LA ANIMACIÓN */
-    position: relative; 
-    overflow: hidden; /* Para que el rojo no se salga del botón */
-    z-index: 1; /* Asegura que el texto quede encima */
+    border-radius: 6px;
+
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
     transition: color .5s ease-in-out, border-color 0.5s ease-in-out;
 }
 
-/* El elemento fantasma que hace el "scroll" rojo */
 .btn-account::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 0%; /* Empieza vacío (0 ancho) */
+    width: 0%;
     height: 100%;
     background-color: var(--primary-red);
-    z-index: -1; /* Se pone DETRÁS del texto */
-    
-    /* Aquí está la magia: aplicamos el cubic-bezier al ANCHO */
+    z-index: -1;
     transition: width .8s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-/* AL PASAR EL MOUSE (HOVER) */
 .btn-account:hover {
-    color: white; /* Texto cambia a blanco */
-    border-color: var(--primary-red); /* Borde se vuelve rojo */
+    color: white;
+    border-color: var(--primary-red);
     box-shadow: 0 4px 12px rgba(204, 8, 8, 0.2);
 }
 
-/* El fondo rojo se expande de izquierda a derecha */
 .btn-account:hover::before {
     width: 100%;
 }
 
-/* Animación extra: el icono crece un poco */
 .icon-user {
     transition: transform 0.3s ease;
 }
@@ -222,25 +215,24 @@
     transform: scale(1.1);
 }
 
-
-
 /* Elementos Ocultos por defecto en Desktop */
 .mobile-menu-icon {
     display: none;
 }
+
 .mobile-only {
     display: none;
 }
 
 /* =========================================================
-   RESPONSIVO (Solo modifica comportamiento en pantallas chicas)
+   RESPONSIVO (Móviles y Tablets)
    ========================================================= */
 
 @media screen and (max-width: 900px) {
-    /* Ajustes para Tablets: Achicar espacios */
     .nav-links {
         gap: 1.5rem;
     }
+
     .brand-logo img {
         height: 60px;
     }
@@ -248,7 +240,7 @@
 
 @media screen and (max-width: 768px) {
     /* --- MÓVIL --- */
-    
+
     .main-nav {
         height: 70px;
         padding: 0 20px;
@@ -259,39 +251,40 @@
         height: 50px;
     }
 
-    /* Mostrar botón hamburguesa */
+    /* REGLA NUEVA: Ocultar logo en móvil si hay sesión */
+    .brand-logo.hidden-mobile-loggedin {
+        display: none;
+    }
+
     .mobile-menu-icon {
         display: block;
         cursor: pointer;
         color: var(--text-dark);
     }
 
-    /* Ocultar elementos de escritorio */
     .desktop-only {
         display: none;
     }
 
-    /* Transformar la lista de enlaces en un menú vertical */
+    /* Menú Desplegable Móvil */
     .nav-links {
         position: absolute;
-        top: 70px; /* Altura del navbar móvil */
+        top: 70px;
         left: 0;
         width: 100%;
-        height: calc(100vh - 70px); /* Ocupa el resto de la pantalla */
+        height: calc(100vh - 70px);
         background-color: white;
         flex-direction: column;
-        align-items: flex-start; /* Alinear a la izquierda */
+        align-items: flex-start;
         padding: 20px 0;
         gap: 0;
         border-top: 1px solid #eee;
-        
-        /* Oculto por defecto (Slide effect) */
+
         transform: translateX(-100%);
         transition: transform 0.3s ease-in-out;
         opacity: 0;
     }
 
-    /* Clase activa para mostrar el menú */
     .nav-links.active {
         transform: translateX(0);
         opacity: 1;
@@ -308,10 +301,10 @@
     .nav-link {
         width: 100%;
         padding: 15px 25px;
-        justify-content: space-between; /* Flecha a la derecha */
+        justify-content: space-between;
     }
 
-    /* Dropdowns en móvil: estáticos y desplazados */
+    /* Dropdowns en móvil */
     .dropdown-menu {
         position: static;
         transform: none;
@@ -319,17 +312,16 @@
         border: none;
         width: 100%;
         padding: 0;
-        display: none; /* Oculto por defecto */
+        display: none;
         background-color: #fafafa;
     }
 
-    /* Mostrar dropdown al hacer hover/click (simple CSS fix) */
     .nav-item:hover .dropdown-menu {
         display: block;
     }
 
     .dropdown-menu li a {
-        padding-left: 40px; /* Indentación */
+        padding-left: 40px;
     }
 
     /* Botón Mi Cuenta en Móvil */
