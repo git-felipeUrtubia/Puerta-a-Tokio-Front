@@ -14,9 +14,9 @@ export const NavBar = () => {
     const res = JSON.parse(localStorage.getItem("token"));
 
     useEffect(() => {
-        if (res && res.data) {
+        if (res) {
             setState(true);
-            setUsername(`${res.data.firstName} ${res.data.lastName}`);
+            setUsername(`${res.firstName} ${res.lastName}`);
         } else {
             setState(false);
             setUsername('');

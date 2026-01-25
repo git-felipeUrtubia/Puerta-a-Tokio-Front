@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { formatName } from '../../assets/utils/formatters.js';
 import { ChevronDown, LogOut, User } from 'lucide-react';
 import { Link } from 'react-router-dom'; // Asumiendo que usas React Router
 import '../../assets/styles/home/SessionTrue.css';
@@ -7,7 +8,7 @@ import '../../assets/styles/home/SessionTrue.css';
 export const SessionTrue = ({ userName, onLogout }) => {
     const [isOpen, setIsOpen] = useState(false);
     const menuRef = useRef(null);
-
+    const nameFormated = formatName(userName)
     // Obtenemos la inicial
     const initial = userName.charAt(0).toUpperCase();
 
@@ -35,7 +36,7 @@ export const SessionTrue = ({ userName, onLogout }) => {
                 </div>
 
                 <div className="user-info">
-                    <span className="user-name">{userName}</span>
+                    <span className="user-name">{nameFormated}</span>
                     {/* La flecha rota si el menú está abierto */}
                     <ChevronDown
                         size={16}
