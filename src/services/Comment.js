@@ -20,7 +20,7 @@ export const saveComment = async (formData) => {
 
     // console.log("REQUEST: ", request)
 
-    const res = await axios.post(`https://backend-puerta-a-tokio-production.up.railway.app/comment/save-comment`, request)
+    const res = await axios.post(`${API_URL}/comment/save-comment`, request)
 
     return res.data;
 }
@@ -30,7 +30,7 @@ export const getAllComments = async () => {
 
     let data = JSON.parse(localStorage.getItem("token"));
 
-    const res = await axios.get(`https://backend-puerta-a-tokio-production.up.railway.app/comment/find-all`, {
+    const res = await axios.get(`${API_URL}/comment/find-all`, {
         headers: {
             'Authorization': `Bearer ${data.jwt}`
         }
