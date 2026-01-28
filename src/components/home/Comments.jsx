@@ -8,6 +8,8 @@ export const Comments = () => {
   const [comments, setComments] = useState([]);
   const [showError, setShowError] = useState(true);
   const [commentsIsNull, setCommentsIsNull] = useState(true);
+  const [login, setLogin] = useState(false)
+
   const fetchComments = async () => {
     const data = await getAllComments();
     if (data != null) {
@@ -17,6 +19,13 @@ export const Comments = () => {
   }
 
   useEffect(() => {
+    
+    const data = JSON.parse(localStorage.getItem('token'))
+    if(!data) { 
+      setLogin(false)
+      return
+    }
+    setLogin(true)
     fetchComments();
   }, [])
 
@@ -106,7 +115,7 @@ export const Comments = () => {
         </div>
 
         {/* CONTENEDOR CON SCROLL */}
-        { commentsIsNull ? '' : showComments() }
+        { commentsIsNull && login ? '' : showComments() }
 
         {/* FORMULARIO */}
         <div className="form-wrapper">
