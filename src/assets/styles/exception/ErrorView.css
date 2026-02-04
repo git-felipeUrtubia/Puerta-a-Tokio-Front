@@ -1,0 +1,162 @@
+/* ErrorView.css */
+
+:root {
+    --primary-red: #cc0808;
+    --primary-red-hover: #b71c1c;
+    --text-dark: #1f1f1f;
+    --text-gray: #666666;
+    --bg-light: #f8f9fa;
+    --white: #ffffff;
+}
+
+.error-view-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Altura mínima para centrar en pantalla, restando aprox el header/footer */
+    min-height: 70vh; 
+    padding: 40px 20px;
+    background-color: var(--bg-light);
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+.error-card {
+    background-color: var(--white);
+    padding: 50px 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+    border: 1px solid rgba(0,0,0,0.03);
+    overflow: hidden; /* Para los círculos decorativos */
+    position: relative;
+}
+
+/* --- ILUSTRACIÓN --- */
+.error-illustration {
+    position: relative;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.error-icon {
+    color: var(--primary-red);
+    z-index: 2;
+    position: relative;
+}
+
+/* Círculos decorativos animados de fondo */
+.circle-bg {
+    position: absolute;
+    border-radius: 50%;
+    background-color: var(--primary-red);
+    opacity: 0.05;
+    z-index: 1;
+}
+
+.circle-1 {
+    width: 120px;
+    height: 120px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse 3s infinite ease-in-out;
+}
+
+.circle-2 {
+    width: 160px;
+    height: 160px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse 3s infinite ease-in-out 0.5s; /* Retraso para efecto de onda */
+}
+
+@keyframes pulse {
+    0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.05; }
+    50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.08; }
+    100% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.05; }
+}
+
+/* --- TEXTOS --- */
+.error-title {
+    font-size: 1.8rem;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.error-message {
+    font-size: 1.05rem;
+    color: var(--text-gray);
+    line-height: 1.6;
+    margin-bottom: 35px;
+}
+
+/* --- BOTONES --- */
+.error-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.btn-error-primary, .btn-error-secondary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.btn-error-primary {
+    background-color: var(--primary-red);
+    color: var(--white);
+    border: none;
+}
+
+.btn-error-primary:hover {
+    background-color: var(--primary-red-hover);
+    transform: translateY(-2px);
+}
+
+.btn-error-secondary {
+    background-color: transparent;
+    color: var(--text-dark);
+    border: 2px solid #e0e0e0;
+}
+
+.btn-error-secondary:hover {
+    border-color: var(--text-dark);
+    background-color: #f0f0f0;
+}
+
+/* Animación de entrada simple */
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsivo para los botones */
+@media (min-width: 600px) {
+    .error-actions {
+        flex-direction: row; /* Botones uno al lado del otro en pantallas más grandes */
+        justify-content: center;
+    }
+    .btn-error-primary, .btn-error-secondary {
+        width: auto; /* Ancho automático según el contenido */
+    }
+}

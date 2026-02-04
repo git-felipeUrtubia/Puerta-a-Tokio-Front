@@ -1,68 +1,62 @@
-
-import { useState } from 'react'
-import '../../assets/styles/home/SectionNav.css'
-
+import React, { useState, useEffect } from 'react';
+import { FileText, Map, Image, Info, MessageSquare } from 'lucide-react';
+import '../../assets/styles/home/SectionNav.css';
 
 export const SectionNav = () => {
+    const [activeTab, setActiveTab] = useState('resumen');
+    const [isSticky, setIsSticky] = useState(false);
 
-    const [borderResumen, setBorderResumen] = useState(0);
-    const [borderItinerario, setBorderItinerario] = useState(0);
-    const [borderGaleria, setBorderGaleria] = useState(0);
-    const [borderInformacion, setBorderInformacion] = useState(0);
-    const [borderComentarios, setBorderComentarios] = useState(0);
+    // Detectar scroll para efecto "Sticky"
+    useEffect(() => {
+        const handleScroll = () => {
+            const offset = window.scrollY;
+            if (offset > 400) { // Ajusta este valor según la altura de tu Hero Image
+                setIsSticky(true);
+            } else {
+                setIsSticky(false);
+            }
+        };
 
-    const showBorder = (e) => {
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
-        switch (e.target.className) {
-            case 'resumen':
-                setBorderResumen(1)
-                setBorderItinerario(0)
-                setBorderGaleria(0)
-                setBorderInformacion(0)
-                setBorderComentarios(0)
-                break;
-            case 'itinerario':
-                setBorderResumen(0)
-                setBorderItinerario(1)
-                setBorderGaleria(0)
-                setBorderInformacion(0)
-                setBorderComentarios(0)
-                break;
-            case 'galeria':
-                setBorderResumen(0)
-                setBorderItinerario(0)
-                setBorderGaleria(1)
-                setBorderInformacion(0)
-                setBorderComentarios(0)
-                break;
-            case 'informacion':
-                setBorderResumen(0)
-                setBorderItinerario(0)
-                setBorderGaleria(0)
-                setBorderInformacion(1)
-                setBorderComentarios(0)
-                break;
-            case 'comentarios':
-                setBorderResumen(0)
-                setBorderItinerario(0)
-                setBorderGaleria(0)
-                setBorderInformacion(0)
-                setBorderComentarios(1)
-                break;
-            default:
-                break;
+    // Función para scroll suave a la sección
+    const scrollToSection = (id) => {
+        setActiveTab(id);
+        const element = document.getElementById(id);
+        if (element) {
+            // Ajuste de -80px para que la barra sticky no tape el título
+            const y = element.getBoundingClientRect().top + window.scrollY - 80;
+            window.scrollTo({ top: y, behavior: 'smooth' });
         }
-    }
+    };
+
+    const tabs = [
+        { id: 'section-resumen', label: 'Resumen', icon: <FileText size={18} /> },
+        { id: 'section-itinerario', label: 'Itinerario', icon: <Map size={18} /> },
+        { id: 'section-galeria', label: 'Galería', icon: <Image size={18} /> },
+        { id: 'section-information', label: 'Información', icon: <Info size={18} /> },
+        { id: 'section-comentarios', label: 'Comentarios', icon: <MessageSquare size={18} /> }
+    ];
 
     return (
-        <div className='content-section-nav'>
-            <ul>
-                <li><a href="#"><span className='resumen' onClick={(e) => showBorder(e)} style={{ borderBottom: `${borderResumen}px solid black` }}>Resumen</span></a></li>
-                <li><a href="#"><span className='itinerario' onClick={(e) => showBorder(e)} style={{ borderBottom: `${borderItinerario}px solid black` }}>Itinerario</span></a></li>
-                <li><a href="#"><span className='galeria' onClick={(e) => showBorder(e)} style={{ borderBottom: `${borderGaleria}px solid black` }}>Galería</span></a></li>
-                <li><a href="#"><span className='informacion' onClick={(e) => showBorder(e)} style={{ borderBottom: `${borderInformacion}px solid black` }}>Información</span></a></li>
-                <li><a href="#"><span className='comentarios' onClick={(e) => showBorder(e)} style={{ borderBottom: `${borderComentarios}px solid black` }}>Comentarios</span></a></li>
-            </ul>
-        </div>
-    )
-}
+        <nav className={`tour-nav-container ${isSticky ? 'sticky' : ''}`}>
+            <div className="tour-nav-content">
+                <ul className="tour-nav-list">
+                    {tabs.map((tab) => (
+                        <li key={tab.id} className="tour-nav-item">
+                            <button
+                                className={`tour-nav-btn ${activeTab === tab.id ? 'active' : ''}`}
+                                onClick={() => scrollToSection(tab.id)}
+                            >
+                                <span className="nav-icon">{tab.icon}</span>
+                                {tab.label}
+                            </button>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </nav>
+    );
+};

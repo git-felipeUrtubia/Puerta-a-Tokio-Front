@@ -1,0 +1,364 @@
+/* ShrinesTemples.css */
+
+:root {
+    --zen-gold: #c5a059;
+    --zen-red: #b93b3b; /* Rojo bermellón más tradicional/apagado */
+    --zen-black: #2c2c2c;
+    --zen-bg: #fdfbf7; /* Blanco hueso / Papel washi */
+    --text-gray: #666;
+    --white: #ffffff;
+}
+
+.shrine-page {
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--zen-bg);
+    color: var(--zen-black);
+}
+
+/* --- HERO --- */
+.shrine-hero {
+    position: relative;
+    height: 60vh;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.shrine-hero-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.shrine-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(40,40,40,0.4), rgba(20,20,20,0.8));
+    z-index: 2;
+}
+
+.shrine-hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 700px;
+    padding: 20px;
+}
+
+.zen-tag {
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.6);
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    backdrop-filter: blur(4px);
+}
+
+.shrine-title {
+    font-size: 3.5rem;
+    font-weight: 400; /* Letra más fina para elegancia */
+    margin: 0 0 20px 0;
+    font-family: 'Georgia', serif;
+    letter-spacing: 1px;
+}
+
+.shrine-subtitle {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* --- SECCIÓN DUALIDAD --- */
+.duality-section {
+    padding: 80px 20px;
+    background-color: var(--white);
+}
+
+.duality-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.duality-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.duality-header h2 { font-size: 2.2rem; font-family: 'Georgia', serif; color: var(--zen-black); margin-bottom: 10px; }
+.duality-header p { color: var(--text-gray); font-size: 1.1rem; }
+
+.duality-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.edu-card {
+    border: 1px solid #e0e0e0;
+    padding: 40px;
+    border-radius: 4px; /* Bordes menos redondeados para seriedad */
+    text-align: center;
+    transition: transform 0.3s;
+    background-color: #fafafa;
+}
+
+.edu-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+
+/* Estilos específicos Shinto vs Buddhist */
+.edu-card.shinto { border-top: 4px solid var(--zen-red); }
+.edu-card.buddhist { border-top: 4px solid var(--zen-black); }
+
+.edu-icon-wrapper {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px auto;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #eee;
+}
+
+.edu-kanji { font-size: 2.5rem; font-family: 'Georgia', serif; }
+.shinto .edu-kanji { color: var(--zen-red); }
+.buddhist .edu-kanji { color: var(--zen-black); }
+
+.religion-label {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: #999;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.edu-list {
+    text-align: left;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.edu-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+    color: var(--text-gray);
+}
+.edu-list li:last-child { border-bottom: none; }
+.edu-list strong { color: var(--zen-black); margin-right: 5px; }
+
+
+/* --- LISTA LUGARES --- */
+.sacred-places {
+    padding: 60px 20px;
+    background-color: var(--zen-bg);
+}
+
+.places-container { max-width: 1100px; margin: 0 auto; }
+
+.places-filter {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 50px;
+}
+
+/* --- FILTROS ESTILO ZEN FLOTANTE --- */
+
+.places-filter {
+    display: flex;
+    justify-content: center;
+    gap: 5px; /* Menos espacio porque están dentro de una cápsula */
+    margin-bottom: 50px;
+    
+    /* Creamos la cápsula contenedora */
+    background-color: #fff;
+    padding: 8px;
+    border-radius: 50px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06); /* Sombra suave para que flote */
+    border: 1px solid rgba(0,0,0,0.02);
+}
+
+.p-filter-btn {
+    background: transparent;
+    border: none;
+    padding: 10px 28px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    color: var(--text-gray);
+    border-radius: 40px; /* Botones redondos */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto Hover sutil */
+.p-filter-btn:hover {
+    color: var(--zen-black);
+    background-color: rgba(0,0,0,0.04);
+}
+
+/* ESTADO ACTIVO: Negro Zen con texto Dorado */
+.p-filter-btn.active {
+    background-color: var(--zen-black);
+    color: var(--zen-gold); /* El dorado resalta sobre el negro */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transform: scale(1.05); /* Crece un poquito */
+}
+
+/* Opcional: Pequeño punto dorado en el activo para decorar */
+.p-filter-btn.active::after {
+    content: '•';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+    color: var(--zen-gold);
+    line-height: 0;
+    opacity: 0.5;
+}
+
+.places-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.place-card {
+    background: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+    transition: transform 0.3s;
+}
+
+.place-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
+
+.place-img-wrap {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+}
+
+.place-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s;
+}
+
+.place-card:hover .place-img-wrap img { transform: scale(1.05); }
+
+.type-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 5px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.type-badge.santuario { color: var(--zen-red); border-left: 3px solid var(--zen-red); }
+.type-badge.templo { color: var(--zen-black); border-left: 3px solid var(--zen-black); }
+
+.place-content { padding: 25px; }
+
+.place-titles { margin-bottom: 10px; }
+.jp-name-sm { margin: 0; color: #aaa; font-size: 0.85rem; font-weight: 400; }
+.place-titles h3 { margin: 2px 0 0 0; font-size: 1.4rem; font-family: 'Georgia', serif; color: var(--zen-black); }
+
+.place-meta {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+    color: var(--zen-gold);
+    margin-bottom: 15px;
+}
+
+.place-desc { color: var(--text-gray); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; }
+
+.btn-place-link {
+    background: none;
+    border: none;
+    color: var(--zen-black);
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0;
+    transition: gap 0.2s;
+}
+.btn-place-link:hover { gap: 12px; color: var(--zen-gold); }
+
+/* --- RITUAL GUIDE --- */
+.ritual-guide {
+    background-color: #2c2c2c; /* Fondo oscuro zen */
+    color: white;
+    padding: 80px 20px;
+}
+
+.ritual-container { max-width: 1000px; margin: 0 auto; }
+
+.ritual-intro { text-align: center; margin-bottom: 50px; }
+.ritual-icon { color: var(--zen-gold); margin-bottom: 15px; }
+.ritual-intro h2 { font-size: 2rem; font-family: 'Georgia', serif; margin: 0 0 10px 0; }
+.ritual-intro p { color: #bbb; max-width: 600px; margin: 0 auto; }
+
+.steps-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+}
+
+.step-item {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.03);
+}
+
+.step-num {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 50%;
+    background-color: var(--zen-gold);
+    color: var(--zen-black);
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.step-item h4 { margin: 0 0 10px 0; font-size: 1.1rem; color: var(--zen-gold); }
+.step-item p { margin: 0; color: #ccc; font-size: 0.9rem; line-height: 1.5; }
+
+/* ANIMACIONES Y RESPONSIVO */
+.fade-in { animation: fadeIn 0.8s ease-out; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+@media (max-width: 900px) {
+    .duality-cards { grid-template-columns: 1fr; }
+    .shrine-title { font-size: 2.5rem; }
+}

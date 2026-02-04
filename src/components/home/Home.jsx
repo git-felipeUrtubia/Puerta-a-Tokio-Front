@@ -50,6 +50,11 @@ export const Home = () => {
         ])
     }, [])
 
+    const isSession = () => {
+        let token = JSON.parse(localStorage.getItem('token') || null);
+        return token != null;
+    }
+
 
     return (
         <div>
@@ -68,7 +73,7 @@ export const Home = () => {
             <hr className="separador-info"></hr>
             <Information />
             <hr className="separador-comments"></hr>
-            <Comments />
+            { isSession() ? <Comments /> : ''}
 
         </div>
     )

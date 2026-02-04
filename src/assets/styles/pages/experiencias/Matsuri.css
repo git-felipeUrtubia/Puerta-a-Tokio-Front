@@ -1,0 +1,254 @@
+/* Festivals.css */
+
+:root {
+    --primary-red: #cc0808;
+    --text-black: #111;
+    --text-gray: #666;
+    --bg-white: #fff;
+    --bg-off: #fafafa;
+}
+
+.festivals-page {
+    background-color: var(--bg-white);
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    color: var(--text-black);
+}
+
+/* --- HERO MINIMAL --- */
+.fest-hero-minimal {
+    padding: 100px 20px 60px;
+    text-align: center;
+    background-color: var(--bg-off);
+    border-bottom: 1px solid #eee;
+}
+
+.overline {
+    display: block;
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--primary-red);
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.fest-main-title {
+    font-size: 4rem;
+    font-weight: 800;
+    margin: 0 0 20px 0;
+    font-family: 'Georgia', serif; /* Toque editorial */
+    letter-spacing: -1px;
+}
+
+.fest-main-desc {
+    font-size: 1.15rem;
+    color: var(--text-gray);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* --- FILTROS --- */
+.fest-filter-nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 30px 20px;
+    position: sticky;
+    top: 0;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(5px);
+    z-index: 10;
+    border-bottom: 1px solid #eee;
+}
+
+.text-filter {
+    background: none;
+    border: none;
+    font-size: 0.95rem;
+    color: #999;
+    cursor: pointer;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s;
+    font-weight: 600;
+}
+
+.text-filter:hover { color: var(--text-black); }
+
+.text-filter.active {
+    color: var(--primary-red);
+    border-bottom-color: var(--primary-red);
+}
+
+/* --- LISTA ZIG-ZAG --- */
+.events-list {
+    padding: 60px 0;
+}
+
+.events-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 100px; /* Mucho espacio entre items para elegancia */
+}
+
+.event-row {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+/* MAGIA: Invertir orden en pares */
+.event-row:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+/* COLUMNA IMAGEN */
+.event-image-col {
+    flex: 1;
+    position: relative;
+    height: 400px; /* Altura fija para uniformidad */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.event-image-col img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+}
+
+.event-row:hover .event-image-col img {
+    transform: scale(1.05);
+}
+
+.date-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: white;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    color: var(--text-black);
+}
+
+.db-icon { color: var(--primary-red); }
+
+/* COLUMNA INFO */
+.event-info-col {
+    flex: 1;
+}
+
+.info-content {
+    max-width: 450px;
+    margin: 0 auto; /* Centrar contenido si sobra espacio */
+}
+
+.event-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--primary-red);
+    background-color: #fff0f0;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.event-title {
+    font-size: 2.2rem;
+    margin: 0 0 15px 0;
+    font-family: 'Georgia', serif;
+    line-height: 1.2;
+}
+
+.jp-char {
+    display: block;
+    font-size: 1rem;
+    color: #bbb;
+    font-family: sans-serif;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+.event-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-gray);
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.event-desc {
+    color: var(--text-gray);
+    line-height: 1.7;
+    margin-bottom: 30px;
+    font-size: 1.05rem;
+}
+
+.btn-event-detail {
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: var(--text-black);
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 2px solid var(--primary-red);
+    padding-bottom: 2px;
+    transition: gap 0.3s;
+}
+
+.btn-event-detail:hover {
+    gap: 15px;
+    color: var(--primary-red);
+}
+
+/* ANIMACIÓN */
+.fade-in { animation: fadeIn 0.8s ease-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* RESPONSIVO */
+@media (max-width: 900px) {
+    .event-row, .event-row:nth-child(even) {
+        flex-direction: column; /* Apilar en móvil */
+        gap: 30px;
+        margin-bottom: 60px;
+    }
+
+    .event-image-col {
+        width: 100%;
+        height: 250px; /* Más bajo en móvil */
+    }
+
+    .fest-main-title {
+        font-size: 2.5rem;
+    }
+
+    .fest-filter-nav {
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding-bottom: 15px;
+    }
+    
+    .text-filter {
+        white-space: nowrap;
+    }
+}

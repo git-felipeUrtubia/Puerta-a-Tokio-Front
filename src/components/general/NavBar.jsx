@@ -83,11 +83,11 @@ export const NavBar = () => {
                             Destinos <ChevronDown size={14} className="chevron" />
                         </a>
                         <ul className="dropdown-menu">
-                            <li><a href="#">Tokio y Kanto</a></li>
-                            <li><a href="#">Kioto y Kansai</a></li>
-                            <li><a href="#">Hokkaido</a></li>
-                            <li><a href="#">Islas Okinawa</a></li>
-                            <li><a href="#">Kyushu</a></li>
+                            <li><a href="/home/destinos/tokio-kanto">Tokio y Kanto</a></li>
+                            <li><a href="/home/destinos/kioto-kansai">Kioto y Kansai</a></li>
+                            <li><a href="/home/destinos/hokkaido">Hokkaido</a></li>
+                            <li><a href="/home/destinos/islas-okinawa">Islas Okinawa</a></li>
+                            <li><a href="/home/destinos/kyushu">Kyushu</a></li>
                         </ul>
                     </li>
 
@@ -96,10 +96,10 @@ export const NavBar = () => {
                             Experiencias <ChevronDown size={14} className="chevron" />
                         </a>
                         <ul className="dropdown-menu">
-                            <li><a href="#">Festivales (Matsuri)</a></li>
-                            <li><a href="#">Santuarios y Templos</a></li>
-                            <li><a href="#">Naturaleza</a></li>
-                            <li><a href="#">Barrios Emblemáticos</a></li>
+                            <li><a href="/home/experiencias/matsuri">Festivales (Matsuri)</a></li>
+                            <li><a href="/home/experiencias/santuarios-y-templos">Santuarios y Templos</a></li>
+                            <li><a href="/home/experiencias/naturaleza">Naturaleza</a></li>
+                            <li><a href="/home/experiencias/barrios-emblematicos">Barrios Emblemáticos</a></li>
                         </ul>
                     </li>
 
@@ -108,9 +108,9 @@ export const NavBar = () => {
                             Nosotros <ChevronDown size={14} className="chevron" />
                         </a>
                         <ul className="dropdown-menu">
-                            <li><a href="#">Nuestra Historia</a></li>
-                            <li><a href="#">Inspiración</a></li>
-                            <li><a href="#">Contacto</a></li>
+                            <li><a href="/home/nosotros/nuestra-historia">Nuestra Historia</a></li>
+                            <li><a href="/home/nosotros/inspiracion">Inspiración</a></li>
+                            <li><a href="/home/nosotros/contacto">Contacto</a></li>
                         </ul>
                     </li>
 
@@ -119,9 +119,9 @@ export const NavBar = () => {
                             Blog <ChevronDown size={14} className="chevron" />
                         </a>
                         <ul className="dropdown-menu">
-                            <li><a href="#">Guías de Ciudad</a></li>
-                            <li><a href="#">Gastronomía</a></li>
-                            <li><a href="#">Consejos de Viaje</a></li>
+                            <li><a href="/home/blog/guias-de-ciudad">Guías de Ciudad</a></li>
+                            <li><a href="/home/blog/gastronomia">Gastronomía</a></li>
+                            <li><a href="/home/blog/concejos-de-viaje">Consejos de Viaje</a></li>
                         </ul>
                     </li>
 

@@ -1,0 +1,323 @@
+/* Nature.css */
+
+:root {
+    --primary-red: #cc0808;
+    --nature-green: #2d4a3e; /* Verde bosque profundo japonés */
+    --nature-accent: #8ba88e; /* Verde té matcha suave */
+    --text-dark: #1f1f1f;
+    --text-gray: #555;
+    --bg-white: #ffffff;
+    --bg-nature: #f4f7f5; /* Un blanco con tinte verdoso muy sutil */
+}
+
+.nature-page {
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-nature);
+    min-height: 100vh;
+}
+
+/* --- HERO --- */
+.nature-hero {
+    position: relative;
+    height: 60vh;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.nature-hero-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.nature-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6));
+    z-index: 2;
+}
+
+.nature-content {
+    position: relative;
+    z-index: 3;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.nature-tag {
+    font-size: 1rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 10px;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+.nature-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin: 0 0 15px 0;
+    font-family: 'Georgia', serif;
+}
+
+.nature-subtitle {
+    font-size: 1.2rem;
+    font-weight: 300;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* --- SHINRIN YOKU SECTION --- */
+.shinrin-section {
+    padding: 80px 20px;
+    background-color: white;
+}
+
+.nature-container { max-width: 1100px; margin: 0 auto; }
+
+.shinrin-layout {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.shinrin-text { flex: 1; }
+
+.shinrin-text h2 {
+    font-size: 2.5rem;
+    color: var(--nature-green);
+    margin: 0 0 10px 0;
+    font-family: 'Georgia', serif;
+}
+
+.kanji-lg {
+    font-size: 2.5rem;
+    color: var(--nature-accent);
+    margin-left: 10px;
+    font-weight: 400;
+}
+
+.shinrin-text h3 {
+    font-size: 1.2rem;
+    color: var(--primary-red);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.shinrin-text p {
+    color: var(--text-gray);
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+}
+
+.shinrin-visual {
+    flex: 1;
+    position: relative;
+}
+
+.shinrin-visual img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(45, 74, 62, 0.15); /* Sombra verde oscuro sutil */
+    position: relative;
+    z-index: 2;
+}
+
+.leaf-decor {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 100px;
+    height: 100px;
+    background-color: var(--nature-accent);
+    border-radius: 50%;
+    opacity: 0.3;
+    z-index: 1;
+}
+
+/* --- GALERÍA --- */
+.nature-gallery {
+    padding: 60px 20px;
+}
+
+/* Filtros Orgánicos */
+.nature-filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 50px;
+}
+
+.n-filter {
+    background: transparent;
+    border: 1px solid #ccc;
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    color: var(--text-gray);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+}
+
+.n-filter:hover {
+    border-color: var(--nature-green);
+    color: var(--nature-green);
+}
+
+.n-filter.active {
+    background-color: var(--nature-green);
+    color: white;
+    border-color: var(--nature-green);
+    box-shadow: 0 5px 15px rgba(45, 74, 62, 0.2);
+}
+
+/* Grid de Tarjetas */
+.nature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.nature-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+    transition: transform 0.3s;
+}
+
+.nature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+}
+
+.n-img-wrapper {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.n-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.nature-card:hover img { transform: scale(1.05); }
+
+.season-badge {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(255,255,255,0.9);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--nature-green);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    backdrop-filter: blur(4px);
+}
+
+.n-card-body { padding: 25px; }
+
+.n-card-header { margin-bottom: 15px; }
+
+.n-jp-name {
+    font-size: 0.8rem;
+    color: #999;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.n-card-header h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.4rem;
+    color: var(--text-dark);
+}
+
+.n-location {
+    font-size: 0.9rem;
+    color: var(--primary-red);
+    font-weight: 600;
+}
+
+.n-desc {
+    color: var(--text-gray);
+    line-height: 1.5;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* --- FOOTER ESTACIONAL --- */
+.seasons-strip {
+    background-color: var(--nature-green);
+    padding: 50px 20px;
+    color: white;
+    text-align: center;
+}
+
+.strip-title {
+    margin: 0 0 40px 0;
+    font-size: 1.5rem;
+    opacity: 0.9;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.seasons-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.season-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.s-icon { opacity: 0.8; width: 32px; height: 32px; }
+
+.spring .s-icon { color: #ffb7b2; } /* Rosa Sakura */
+.summer .s-icon { color: #a8e6cf; } /* Verde fresco */
+.autumn .s-icon { color: #ffcc5c; } /* Amarillo/Naranja */
+.winter .s-icon { color: #dcedc1; } /* Blanco Hielo */
+
+.season-item span { font-weight: 600; letter-spacing: 0.5px; }
+
+/* ANIMACIONES */
+.fade-in { animation: fadeIn 0.8s ease-out; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* RESPONSIVO */
+@media (max-width: 900px) {
+    .nature-title { font-size: 2.5rem; }
+    .shinrin-layout { flex-direction: column; gap: 40px; }
+    .shinrin-visual { width: 100%; }
+}

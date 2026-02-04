@@ -1,8 +1,7 @@
 
 import axios from "axios";
 
-const API_URL = import.meta.env.VITE_API_URL;
-console.log("API URL", API_URL)
+// const API_URL = import.meta.env.VITE_API_URL;
 
 
 export const saveComment = async (formData) => {
@@ -20,7 +19,7 @@ export const saveComment = async (formData) => {
 
     // console.log("REQUEST: ", request)
 
-    const res = await axios.post(`${API_URL}/comment/save-comment`, request)
+    const res = await axios.post(`http://localhost:8080/comment/save-comment`, request)
 
     return res.data;
 }
@@ -30,7 +29,7 @@ export const getAllComments = async () => {
 
     let data = JSON.parse(localStorage.getItem("token"));
 
-    const res = await axios.get(`${API_URL}/comment/find-all`, {
+    const res = await axios.get(`http://localhost:8080/comment/find-all`, {
         headers: {
             'Authorization': `Bearer ${data.jwt}`
         }

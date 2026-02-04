@@ -1,7 +1,7 @@
 :root {
     --primary-red: #cc0808;
     --text-dark: #1f1f1f;
-    --text-light: #666666;
+    /* --text-light: #666666; */
     --bg-white: #ffffff;
     --border-color: #e5e5e5;
 }
@@ -126,7 +126,8 @@
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
-    background: white;
+    
+    background: rgb(255, 255, 255);
     min-width: 200px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
     border-top: 3px solid var(--primary-red);
@@ -147,9 +148,9 @@
 .dropdown-menu li a {
     display: block;
     padding: 10px 20px;
-    color: var(--text-light);
+    color: #4b4b4b;
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: .95rem;
     transition: all 0.2s;
 }
 

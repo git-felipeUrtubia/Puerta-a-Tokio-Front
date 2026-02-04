@@ -8,7 +8,7 @@ export const Comments = () => {
   const [comments, setComments] = useState([]);
   const [showError, setShowError] = useState(true);
   const [commentsIsNull, setCommentsIsNull] = useState(true);
-  const [login, setLogin] = useState(false)
+  
 
   const fetchComments = async () => {
     const data = await getAllComments();
@@ -19,13 +19,6 @@ export const Comments = () => {
   }
 
   useEffect(() => {
-    
-    const data = JSON.parse(localStorage.getItem('token'))
-    if(!data) { 
-      setLogin(false)
-      return
-    }
-    setLogin(true)
     fetchComments();
   }, [])
 
@@ -106,7 +99,7 @@ export const Comments = () => {
   }
 
   return (
-    <section className="comments-section">
+    <section id='section-comentarios' className="comments-section">
       <div className="comments-container">
 
         <div className="comments-header">
@@ -115,7 +108,7 @@ export const Comments = () => {
         </div>
 
         {/* CONTENEDOR CON SCROLL */}
-        { commentsIsNull && login ? '' : showComments() }
+        { commentsIsNull ? '' : showComments() }
 
         {/* FORMULARIO */}
         <div className="form-wrapper">

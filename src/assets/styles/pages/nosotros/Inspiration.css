@@ -1,0 +1,262 @@
+/* Inspiration.css */
+
+:root {
+    --primary-red: #cc0808;
+    --text-dark: #1f1f1f;
+    /* --text-light: #f5f5f5; */
+    --bg-white: #ffffff;
+    --overlay-gradient: linear-gradient(to top, rgba(0,0,0,0.85), transparent 60%);
+}
+
+.inspiration-page {
+    background-color: var(--bg-white);
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    padding-bottom: 60px;
+}
+
+/* --- HEADER --- */
+.insp-header {
+    text-align: center;
+    padding: 80px 20px 40px;
+    background-color: #fafafa;
+}
+
+.insp-header-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.insp-tag {
+    color: var(--primary-red);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.insp-title {
+    font-size: 3rem;
+    color: var(--text-dark);
+    margin: 0 0 20px 0;
+    font-weight: 800;
+}
+
+.insp-subtitle {
+    font-size: 1.15rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* --- BENTO GRID SYSTEM --- */
+.bento-section {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.bento-grid {
+    display: grid;
+    /* Creamos una grilla base de 4 columnas */
+    grid-template-columns: repeat(4, 1fr);
+    /* Altura de fila base */
+    grid-auto-rows: 250px; 
+    gap: 20px;
+}
+
+/* Tamaños de las tarjetas */
+.bento-item {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bento-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* Clases para controlar el tamaño (Spans) */
+.bento-item.normal { grid-column: span 1; grid-row: span 1; }
+.bento-item.wide   { grid-column: span 2; grid-row: span 1; }
+.bento-item.tall   { grid-column: span 1; grid-row: span 2; }
+.bento-item.large  { grid-column: span 2; grid-row: span 2; }
+
+/* Imagen y Overlay */
+.bento-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.bento-item:hover .bento-img {
+    transform: scale(1.05);
+}
+
+.bento-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--overlay-gradient);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 25px;
+    box-sizing: border-box;
+    opacity: 0.9;
+    transition: opacity 0.3s;
+}
+
+.bento-item:hover .bento-overlay {
+    opacity: 1;
+}
+
+.bento-cat {
+    color: #ffcccc; /* Rojo pastel suave */
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.bento-title {
+    color: white;
+    font-size: 1.4rem;
+    margin: 0 0 8px 0;
+    font-weight: 700;
+}
+
+.bento-desc {
+    color: #e0e0e0;
+    font-size: 0.95rem;
+    margin: 0;
+    line-height: 1.4;
+    
+    /* Ocultar descripción en móviles muy pequeños o tarjetas pequeñas si se desea */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.bento-item:hover .bento-desc {
+    max-height: 100px; /* Despliega texto al hover */
+}
+
+/* --- DID YOU KNOW SECTION --- */
+.did-you-know {
+    padding: 80px 20px;
+    background-color: var(--bg-white);
+}
+
+.dyk-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.dyk-card {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 12px;
+}
+
+.dyk-icon {
+    color: var(--primary-red);
+    margin-bottom: 15px;
+}
+
+.dyk-card h4 {
+    margin: 0 0 10px 0;
+    color: var(--text-dark);
+}
+
+.dyk-card p {
+    margin: 0;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* --- CTA FINAL --- */
+.insp-cta {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #fafafa;
+    border-top: 1px solid #eee;
+}
+
+.insp-cta h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: var(--text-dark);
+}
+
+.btn-insp-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--primary-red);
+    color: white;
+    padding: 15px 35px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-insp-cta:hover {
+    background-color: #b71c1c;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+    .bento-grid {
+        grid-template-columns: repeat(3, 1fr); /* Tablet: 3 columnas */
+    }
+}
+
+@media (max-width: 768px) {
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr); /* Móvil grande: 2 columnas */
+        grid-auto-rows: 200px;
+    }
+    
+    /* En móvil, reseteamos tamaños complejos para que se apilen mejor o sean uniformes */
+    .bento-item.large { grid-column: span 2; grid-row: span 2; } 
+    .bento-item.wide  { grid-column: span 2; }
+    .bento-item.tall  { grid-row: span 2; }
+    
+    .insp-title { font-size: 2.2rem; }
+}
+
+@media (max-width: 480px) {
+    .bento-grid {
+        grid-template-columns: 1fr; /* Móvil pequeño: 1 sola columna */
+        grid-auto-rows: 250px;
+    }
+    
+    /* En 1 columna, todos ocupan todo el ancho */
+    .bento-item.large, .bento-item.wide, .bento-item.tall, .bento-item.normal {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+    
+    .bento-desc { max-height: none; } /* Mostrar siempre texto en móvil */
+}
+
+/* ANIMACIÓN */
+.fade-in { animation: fadeIn 0.5s ease-out; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }

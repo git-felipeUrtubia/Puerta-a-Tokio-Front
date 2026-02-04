@@ -5,7 +5,7 @@ import map from '../../../public/map_turistik.png'
 
 export const Resumen = () => {
     return (
-        <div className='content-resumen'>
+        <div id='section-resumen' className='content-resumen'>
             <div className='content-text-resumen'>
                 <p>
                     <i>

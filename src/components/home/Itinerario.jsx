@@ -36,7 +36,7 @@ export const Itinerario = () => {
     }
 
     return (
-        <div>
+        <div id='section-itinerario'>
             <div className='grid-cards'>
                 {tours?.map(t => (
                     <Card key={t.id_tour} tour={t}/>

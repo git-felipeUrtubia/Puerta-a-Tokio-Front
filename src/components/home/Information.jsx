@@ -1,7 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../../assets/styles/home/Information.css'
 
 export const Information = () => {
+
+    const nav = useNavigate();
 
     // Datos de las tarjetas para fácil edición
     const infoCards = [
@@ -45,7 +48,7 @@ export const Information = () => {
     ];
 
     return (
-        <section className="info-section">
+        <section id='section-information' className="info-section">
             <div className="info-container">
                 <div className="info-header">
                     <h2 className="info-title">Tu viaje soñado a Japón</h2>
@@ -57,7 +60,7 @@ export const Information = () => {
 
                 <div className="info-grid">
                     {infoCards.map((card, index) => (
-                        <div className="info-card" key={index}>
+                        <div className="info-card" key={index} onClick={() => nav(`/home/information/custom-itinerary`)}>
                             <div className="info-icon-wrapper">
                                 {card.icon}
                             </div>

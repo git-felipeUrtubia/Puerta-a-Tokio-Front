@@ -1,0 +1,368 @@
+
+
+:root {
+    --primary-red: #cc0808;
+    --text-dark: #1f1f1f;
+    --text-gray: #666666;
+    --bg-white: #ffffff;
+    --bg-light: #f9f9f9;
+}
+
+.history-page-alt {
+    background-color: var(--bg-white);
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    overflow-x: hidden;
+}
+
+/* --- HERO --- */
+.history-hero-alt {
+    padding: 80px 20px 40px;
+    text-align: center;
+    background-color: var(--bg-light);
+}
+
+.hero-content-alt {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.hero-title-alt {
+    font-size: 3rem;
+    color: var(--text-dark);
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.hero-subtitle-alt {
+    font-size: 1.1rem;
+    color: var(--text-gray);
+    margin-bottom: 25px;
+}
+
+.red-divider {
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary-red);
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+/* --- TIMELINE CONTAINER --- */
+.timeline-section {
+    padding: 60px 20px;
+    position: relative;
+}
+
+.timeline-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    /* Esto es clave: */
+    display: flex;
+    flex-direction: column;
+}
+
+/* La línea vertical central que corre por detrás */
+.timeline-track {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--line-color);
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+/* --- GRID ROW --- */
+/* Cada fila es un Grid de 3 columnas: [Contenido] [Icono] [Espacio] */
+.timeline-row {
+    display: grid;
+    grid-template-columns: 1fr 80px 1fr; /* Izquierda, Centro (Icono), Derecha */
+    align-items: center;
+    margin-bottom: 60px;
+    z-index: 1; /* Encima de la línea */
+}
+
+/* --- LOGICA DE POSICIÓN --- */
+
+/* Si es LEFT: El contenido va en col 1, Icono en col 2, Spacer en col 3 */
+.timeline-row.left .timeline-content {
+    grid-column: 1;
+    text-align: right; /* Opcional: alinear texto hacia el centro */
+    padding-right: 30px;
+}
+.timeline-row.left .timeline-icon-wrapper {
+    grid-column: 2;
+}
+.timeline-row.left .timeline-spacer {
+    grid-column: 3;
+}
+
+/* Si es RIGHT: El contenido va en col 3, Icono en col 2, Spacer en col 1 */
+.timeline-row.right .timeline-content {
+    grid-column: 3;
+    text-align: left;
+    padding-left: 30px;
+}
+.timeline-row.right .timeline-icon-wrapper {
+    grid-column: 2;
+    /* Importante: forzar que el icono se quede en la columna 2 */
+    grid-row: 1; 
+}
+.timeline-row.right .timeline-spacer {
+    grid-column: 1;
+    grid-row: 1; /* Forzamos que ocupe la misma fila */
+}
+
+/* --- EL ICONO CENTRAL --- */
+.timeline-icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.timeline-icon {
+    width: 50px;
+    height: 50px;
+    background-color: var(--bg-white);
+    border: 3px solid var(--primary-red);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary-red);
+    box-shadow: 0 0 0 8px var(--bg-white); /* "Borra" la línea de fondo alrededor del icono */
+    z-index: 2;
+}
+
+/* --- LA TARJETA --- */
+.timeline-card {
+    background: var(--bg-white);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.03);
+}
+
+.timeline-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-image-wrapper {
+    position: relative;
+    height: 180px;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.card-year {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--primary-red);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.card-text {
+    padding: 20px;
+    text-align: left; /* El texto dentro de la tarjeta siempre a la izq para leer bien */
+}
+
+.card-text h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.25rem;
+    color: var(--text-dark);
+}
+
+.card-text p {
+    margin: 0;
+    color: var(--text-gray);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* --- CONECTORES (Flechas o Líneas horizontales) --- */
+.timeline-content {
+    position: relative;
+}
+
+/* Línea conectora pequeña */
+.timeline-content::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 30px; /* Ancho de la conexión */
+    height: 2px;
+    background-color: var(--primary-red);
+    transform: translateY(-50%);
+}
+
+.timeline-row.left .timeline-content::after {
+    right: 0; /* Pegado a la derecha del contenedor de contenido */
+}
+
+.timeline-row.right .timeline-content::after {
+    left: 0; /* Pegado a la izquierda del contenedor de contenido */
+}
+
+/* --- FOOTER CTA (Call to Action) --- */
+.history-footer {
+    position: relative;
+    height: 400px; /* Altura considerable para impactar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    color: white;
+    margin-top: 60px; /* Separación de la línea de tiempo */
+}
+
+.footer-bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    transition: transform 10s ease; /* Efecto zoom lento sutil */
+}
+
+.history-footer:hover .footer-bg-img {
+    transform: scale(1.05);
+}
+
+.footer-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(204, 8, 8, 0.3)); /* Degradado rojo a negro */
+    z-index: 2;
+}
+
+.footer-content-wrapper {
+    position: relative;
+    z-index: 3;
+    max-width: 700px;
+    padding: 0 20px;
+}
+
+.footer-cta-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    letter-spacing: -1px;
+}
+
+.footer-cta-subtitle {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 35px;
+    opacity: 0.95;
+    font-weight: 300;
+}
+
+/* Botón Blanco/Rojo Inverso */
+.btn-history-cta {
+    padding: 15px 35px;
+    background-color: white;
+    color: var(--primary-red);
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.btn-history-cta:hover {
+    background-color: var(--primary-red);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(204, 8, 8, 0.3);
+}
+
+/* --- RESPONSIVO (Móvil) --- */
+@media (max-width: 768px) {
+    /* En móvil, cambiamos a 2 columnas: [Icono] [Contenido] */
+    .timeline-row, .timeline-row.left, .timeline-row.right {
+        grid-template-columns: 60px 1fr; /* Columna pequeña para icono, grande para contenido */
+        gap: 0;
+        margin-bottom: 40px;
+    }
+
+    /* La línea de fondo se mueve a la izquierda */
+    .timeline-track {
+        left: 30px; /* Mitad de 60px */
+    }
+
+    /* Icono siempre en columna 1 */
+    .timeline-row.left .timeline-icon-wrapper,
+    .timeline-row.right .timeline-icon-wrapper {
+        grid-column: 1;
+        justify-content: center;
+    }
+    
+    .timeline-icon {
+        width: 40px;
+        height: 40px;
+        /* box-shadow más pequeño */
+        box-shadow: 0 0 0 5px var(--bg-white); 
+    }
+
+    /* Contenido siempre en columna 2 */
+    .timeline-row.left .timeline-content,
+    .timeline-row.right .timeline-content {
+        grid-column: 2;
+        padding: 0 0 0 20px; /* Margen izquierdo para separar del icono */
+        text-align: left;
+    }
+
+    /* Spacer desaparece */
+    .timeline-row .timeline-spacer {
+        display: none;
+    }
+
+    /* Ajustar conector en móvil */
+    .timeline-content::after {
+        left: 0;
+        width: 20px;
+        background-color: var(--primary-red);
+    }
+    
+    .timeline-row.left .timeline-content::after {
+        right: auto;
+        left: 0;
+    }
+
+    .history-footer {
+        height: 350px;
+    }
+    
+    .footer-cta-title {
+        font-size: 2rem;
+    }
+    
+    .footer-cta-subtitle {
+        font-size: 1rem;
+    }
+}

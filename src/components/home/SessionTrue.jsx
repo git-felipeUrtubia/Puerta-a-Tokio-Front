@@ -51,7 +51,7 @@ export const SessionTrue = ({ userName, onLogout }) => {
 
                     {/* Opción 1: Ir a Perfil */}
                     <Link
-                        to="/profile"
+                        to="/home/profile"
                         className="dropdown-item"
                         onClick={() => setIsOpen(false)}
                     >

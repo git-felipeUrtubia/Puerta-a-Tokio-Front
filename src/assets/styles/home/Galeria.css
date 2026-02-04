@@ -1,134 +1,188 @@
-/* =========================================
-   ESTILOS BASE (Desktop)
-   ========================================= */
-.title {
-  text-align: center;
-  font-size: 40px;
-  font-weight: 500;
-  margin-bottom: 3rem;
-  padding: 0 20px; /* Un poco de margen lateral por si la pantalla es muy chica */
+/* Galeria.css - Estilos para Carrusel Infinito */
+
+:root {
+    --primary-red: #cc0808;
+    --text-dark: #1f1f1f;
+    --text-gray: #666666;
+    --bg-light: #f9f9f9;
 }
 
-.title span:nth-child(1) {
-  color: rgb(3, 3, 44);
+.galeria-section {
+    padding: 60px 0 100px;
+    background-color: var(--bg-light);
+    overflow: hidden;
+    position: relative;
 }
 
-.title span:nth-child(2) {
-  color: rgb(180, 13, 13);
+/* --- ENCABEZADO --- */
+.galeria-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 50px;
+    padding: 0 20px;
 }
 
-/* Contenedor principal centrado */
-.grid {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.galeria-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--primary-red);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+    background: #fff5f5;
+    padding: 6px 14px;
+    border-radius: 30px;
 }
 
-/* La grilla en sí */
-.galeria-grid {
-  display: grid;
-  /* CAMBIO CLAVE: En lugar de 570px fijos, usamos 1fr (fracción flexible) */
-  /* Limitamos el ancho máximo a 1200px para que no se estire infinito en pantallas gigantes */
-  grid-template-columns: repeat(2, 1fr); 
-  max-width: 1200px; 
-  width: 100%; /* Ocupa el ancho disponible */
-  gap: 20px;
-  padding: 20px;
-  box-sizing: border-box; /* Asegura que el padding no sume al ancho total */
+.galeria-title {
+    font-size: 2.5rem;
+    color: var(--text-dark);
+    margin: 0 0 10px 0;
+    font-weight: 800;
 }
 
-.galeria-item {
-  position: relative;
-  overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  aspect-ratio: 4/3; /* Mantiene la forma rectangular */
-  cursor: pointer;
+.galeria-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-gray);
+    margin: 0;
 }
 
-.galeria-img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transition: transform 0.3s ease;
+/* --- CARRUSEL INFINITO --- */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    padding: 20px 0;
+    /* Opcional: Ligera inclinación para estilo moderno */
+    transform: rotate(-1deg) scale(1.02);
 }
 
-.galeria-item:hover .galeria-img {
-  transform: scale(1.1);
+.carousel-track {
+    display: flex;
+    width: max-content;
+    gap: 20px; /* Espacio entre fotos */
+    animation: scroll-continuous 20s linear infinite;
 }
 
-/* Overlay de información */
-.slide-details {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 100%; /* Escondido abajo inicialmente */
-  display: flex;
-  justify-content: start;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  color: white;
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.6); /* Un poco más oscuro para leer mejor */
-  backdrop-filter: blur(4px);
-  transition: .3s ease-in-out;
-  z-index: 10;
-  box-sizing: border-box;
+.carousel-track:hover {
+    animation-play-state: paused;
 }
 
-.slide-details h1 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+.carousel-item {
+    position: relative;
+    height: 350px;       /* Altura fija */
+    aspect-ratio: 3 / 4; /* Formato vertical (Retrato) */
+    flex-shrink: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
-.slide-details p {
-  font-size: 1rem;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  line-height: 1.5;
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
 }
 
-/* Al pasar el mouse, sube el panel */
-.galeria-item:hover .slide-details {
-  top: 0; /* Cubre toda la imagen o ajusta a '20%' si prefieres el estilo anterior */
-  justify-content: center; /* Centra el texto verticalmente */
+.carousel-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    z-index: 5;
 }
 
-/* =========================================
-   RESPONSIVO (Móviles y Tablets Pequeñas)
-   ========================================= */
-@media screen and (max-width: 768px) {
+.carousel-item:hover img {
+    transform: scale(1.1);
+}
+
+/* --- OVERLAY CON TÍTULO CENTRADO --- */
+.item-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Cubre toda la imagen al hacer hover */
+    background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2));
     
-    .title {
-        font-size: 32px; /* Título más pequeño */
-        margin-bottom: 2rem;
-    }
-
-    .galeria-grid {
-        /* Una sola columna en celular */
-        grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 15px;
-    }
-
-    .galeria-item {
-        aspect-ratio: 3/2; /* Un poco más panorámico en móvil se ve mejor */
-    }
-
-    /* Opcional: En móvil, el hover a veces es confuso. 
-       Podrías querer que el texto siempre se vea un poquito abajo, 
-       o mantener el comportamiento actual (tocar para ver). 
-       Dejaré el comportamiento actual pero ajustando el texto. */
+    /* CENTRADO PERFECTO */
+    display: flex;
+    justify-content: center; /* Horizontal */
+    align-items: flex-end;   /* Vertical: Lo deja abajo */
+    padding-bottom: 30px;    /* Espacio desde el borde inferior */
     
-    .slide-details h1 {
-        font-size: 1.2rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-item:hover .item-overlay {
+    opacity: 1;
+}
+
+.galeria-name {
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    padding: 0 15px;
+}
+
+/* --- DEGRADADOS LATERALES --- */
+.carousel-overlay-left,
+.carousel-overlay-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.carousel-overlay-left {
+    left: 0;
+    background: linear-gradient(to right, var(--bg-light) 10%, transparent);
+}
+
+.carousel-overlay-right {
+    right: 0;
+    background: linear-gradient(to left, var(--bg-light) 10%, transparent);
+}
+
+/* --- ANIMACIÓN --- */
+@keyframes scroll-continuous {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* --- RESPONSIVO --- */
+@media (max-width: 768px) {
+    .galeria-title { font-size: 2rem; }
+    
+    .carousel-item {
+        height: 280px; /* Más pequeño en móvil */
+        border-radius: 12px;
     }
     
-    .slide-details p {
-        font-size: 0.9rem;
+    .carousel-track {
+        gap: 15px;
+        animation-duration: 30s;
+    }
+    
+    .item-overlay {
+        /* En móvil, mostramos el título siempre un poco visible o al tocar */
+        opacity: 1; 
+        background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
+        padding-bottom: 15px;
+    }
+    
+    .galeria-name {
+        font-size: 1.1rem;
     }
 }
